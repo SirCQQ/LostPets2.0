@@ -1,0 +1,41 @@
+header{
+    background-color: red;
+    color:white;
+    position: absolute;
+    height:100px;
+    top:0%;
+    left:0px;
+    right:0px;
+}
+#logo{
+    height: 100%;
+    width:height*2;
+}
+
+#login{
+    position:relative;
+    top:25%;  
+    float: right;
+}
+#login-and-forget{
+ position:relative;
+ top:10px;
+}
+footer{
+    background-color: violet;   
+    color: black
+}
+
+
+@media only screen and (max-width:900px)
+{
+    #logo{
+        display: none;
+    }
+    
+}
+#pet-friendly{
+    position: relative;
+    top:100px;
+    height: 400px;
+}
