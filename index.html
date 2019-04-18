@@ -6,29 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <script src="./js/index.js"></script>
     <title>Lost Pets</title>
+    <!-- <script>
+    function login()
+    {
+    var login=document.getElementById("login")
+    console.log(login);
+    console.log("wtf")
+    }
+
+</script> -->
 </head>
 
 <body>
     <header>
         <img id="logo" src="./Img/logo3.png" alt="Logo">
-        <form id="login">
+
+        <button  id="ma-ta" onclick="register()">Display register</button>
+
+        <div id="login">
             <label for="Email">Email</label>
             <input type="email" id="Email" require>
             <label for="Password">Password</label>
             <input type="password" id="Password" require>
             </br>
             <div id="login-and-forget">
-                <button type="submit" id="login-btn">Login</button>
+                <button type="submit"  id="login-btn">Login</button>
                 <a href="#">Forget password click here </a>
             </div>
-        </form>
+        </div>
     </header>
     <div id="body">
         <img id="pet-friendly" src="./Img/pet-friendly-512.png" alt="Pets img">
-    
+        <div id=register class="hiddenregister">
+            <form id="register-form">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <br>
+                <input type="email" id="emailConf" name="emailConf" placeholder="Confirm email" required>
+                <br>
+                <input type="password" id="pass" name="pass" placeholder="Password" required>
+                <br>
+                <input type="password" id="pass2" name="pass2" placeholder="Confirm Password" required>
+                <br>
+                <a>Alege o poza pentru profil</a>
+                <input type="file" name="profilePhoto" accept="image/*">
+                <!-- <input type="button" id="register" value="Register"onclick="window.location='./Login.html';"> -->
+            </form>
+        </div>
     </div>
-   
+
 </body>
 
 </html>

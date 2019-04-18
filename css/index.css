@@ -1,15 +1,15 @@
 header{
-    background-color: red;
-    color:white;
+    /* background-color: red;
+    color:white; */
     position: absolute;
-    height:100px;
+    height:12%;
     top:0%;
     left:0px;
     right:0px;
 }
 #logo{
     height: 100%;
-    width:height*2;
+    width:20%;
 }
 
 #login{
@@ -25,7 +25,32 @@ footer{
     background-color: violet;   
     color: black
 }
+#pet-friendly{
+    position: fixed;
+    top:30%;
+    left:5%;
+    height: 40%;
+}
 
+.hiddenregister{
+    position:fixed;
+    top:30%;
+    right: -100%;
+    text-align:right;
+    float: right;
+}
+#ma-ta{
+    position: absolute;
+    top:140%;
+    left:60%;
+}
+.notHiddenRegister{
+    position:fixed;
+    top:30%;
+    right: 10%;
+    text-align:right;
+    float: right;
+}
 
 @media only screen and (max-width:900px)
 {
@@ -33,9 +58,4 @@ footer{
         display: none;
     }
     
-}
-#pet-friendly{
-    position: relative;
-    top:100px;
-    height: 400px;
 }
