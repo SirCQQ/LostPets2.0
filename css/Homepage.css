@@ -1,0 +1,32 @@
+header{
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    /* background-color: blue; */
+    /* color: white; */
+}
+.logo{
+    height: 100%;
+}
+.icons{
+    position: relative;
+    height: 100%;
+    right: 2%;
+    float: right;
+}
+.icon{
+    position:relative;
+    top:10%;
+    height: 80%;
+}
+.Notifications{
+    /* display: none; */
+}
+.Profile{
+    display: none;
+}
+.top-bar{
+    position: absolute;
+    top:100%;
+    right: 0%;
+}

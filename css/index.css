@@ -12,7 +12,7 @@ header{
 
 #logo{
     height: 100%;
-    width:20%;
+    /* width:height*2; */
 }
 
 #pet-friendly{
@@ -58,7 +58,7 @@ footer{
     position:fixed;
     right:-100%;
     top:40%;
-    text-align:right;
+    text-align:left;
     float: right;
     -webkit-animation-name: notShowRegister;
     -webkit-animation-duration: 2s;
@@ -81,7 +81,7 @@ footer{
     
     right:10%;
     top:40%;
-    text-align:right;
+    text-align:left;
     float: right;
     -webkit-animation-name: showRegister;
     -webkit-animation-duration: 2s;
@@ -211,4 +211,5 @@ footer{
         top: -50%;
         right:5%;
     }
- /* End Animatii */
+}
+/* End Animatii */
