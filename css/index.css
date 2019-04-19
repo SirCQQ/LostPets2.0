@@ -1,30 +1,20 @@
+/*componente html */
+
 header{
-    /* background-color: red;
-    color:white; */
     position: absolute;
     height:12%;
     top:0%;
     left:0px;
     right:0px;
 }
+
+/* Id-ri  */
+
 #logo{
     height: 100%;
     width:20%;
 }
 
-#login{
-    position:relative;
-    top:25%;  
-    float: right;
-}
-#login-and-forget{
- position:relative;
- top:10px;
-}
-footer{
-    background-color: violet;   
-    color: black
-}
 #pet-friendly{
     position: fixed;
     top:30%;
@@ -32,25 +22,86 @@ footer{
     height: 40%;
 }
 
-.hiddenregister{
-    position:fixed;
-    top:30%;
-    right: -100%;
-    text-align:right;
-    float: right;
-}
 #ma-ta{
     position: absolute;
     top:140%;
     left:60%;
 }
-.notHiddenRegister{
+
+#ma-ta2{
+    position: absolute;
+   
+    left:60%;
+    top:160%;
+}
+/*  end Id-ri  */
+
+/* clase */
+
+.login-and-forget{
+ position:relative;
+ top:10px;
+}
+
+footer{
+    background-color: violet;   
+    color: black
+}
+
+.hidden{
+    position: relative;
+    top:-1000px;
+
+}
+
+.hiddenRegister{
     position:fixed;
-    top:30%;
-    right: 10%;
+    right:-100%;
+    top:40%;
     text-align:right;
     float: right;
+    -webkit-animation-name: notShowRegister;
+    -webkit-animation-duration: 2s;
+    animation-name: notShowRegister;
+    animation-duration: 2s;
 }
+.hiddenLogin{
+    position:fixed;
+    right:-1000px;
+    /* text-align:right; */
+    /* float: right; */
+    -webkit-animation-name: notShowLogin;
+    -webkit-animation-duration: 2s;
+    animation-name: notShowLogin;
+    animation-duration: 2s;
+}
+
+.notHiddenRegister{
+    position:fixed;
+    
+    right:10%;
+    top:40%;
+    text-align:right;
+    float: right;
+    -webkit-animation-name: showRegister;
+    -webkit-animation-duration: 2s;
+    animation-name: showRegister;
+    animation-duration: 2s;
+}
+.notHiddenLogin{
+    position: fixed;
+    top:6%;  
+    right:5%;
+    /* float: right; */
+    -webkit-animation-name: showLogin;
+    -webkit-animation-duration: 2s;
+    animation-name: showLogin;
+    animation-duration: 2s;
+}
+
+/*  end clase */
+
+/* max screen only  */
 
 @media only screen and (max-width:900px)
 {
@@ -59,3 +110,105 @@ footer{
     }
     
 }
+
+/* end max screen only  */
+
+
+/* Animatii */
+
+@-webkit-keyframes showRegister {
+    0% {
+        right:-100%;
+        top:40%;
+    }
+    75% {
+        right: 60%;
+        top:40%;
+    }
+
+    100% {
+        right:10%;
+        top:40%;
+    }
+}
+@keyframes showRegister {
+    0% {
+        right:-100%;
+        top:40%;
+    }
+    75% {
+        right: 20%;
+        top:40%;
+    }
+
+    100% {
+        right:10%;
+        top:40%;
+    }
+}
+
+@-webkit-keyframes notShowRegister {
+    0% {
+        right:10%;
+        
+    }
+    100% {
+        right:-100%;
+    }
+}
+@keyframes notShowRegister {
+    0% {
+        right:10%;
+        
+    }
+    100% {
+        right:-100%;
+    }
+}
+
+@-webkit-keyframes showLogin {
+    0% {
+        top: -50%;
+    }
+     75% {
+        top: 10%;
+        
+    }
+
+    100% {
+        top:6%;
+    }
+}
+@keyframes showLogin {
+    0% {
+        top: -50%;
+    }
+     75% {
+        top: 10%;
+        
+    }
+
+    100% {
+        top:6%;
+    }
+}
+@-webkit-keyframes notShowLogin {
+    0% {
+        top:6%;
+        right:5%;
+    }
+    100% {
+        top: -50%;
+        right:5%;
+    }
+}
+@keyframes notShowLogin {
+    0% {
+        top:6%;
+        right:5%;
+    }
+    100% {
+        top: -50%;
+        right:5%;
+    }
+ /* End Animatii */

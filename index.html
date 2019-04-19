@@ -24,14 +24,15 @@
         <img id="logo" src="./Img/logo3.png" alt="Logo">
 
         <button  id="ma-ta" onclick="register()">Display register</button>
+        <button  id="ma-ta2" onclick="login()">Display Login</button>
 
-        <div id="login">
+        <div id="login" class="hidden">
             <label for="Email">Email</label>
             <input type="email" id="Email" require>
             <label for="Password">Password</label>
             <input type="password" id="Password" require>
             </br>
-            <div id="login-and-forget">
+            <div id="button-and-forget" >
                 <button type="submit"  id="login-btn">Login</button>
                 <a href="#">Forget password click here </a>
             </div>
@@ -39,7 +40,7 @@
     </header>
     <div id="body">
         <img id="pet-friendly" src="./Img/pet-friendly-512.png" alt="Pets img">
-        <div id=register class="hiddenregister">
+        <div id=register class="hidden">
             <form id="register-form">
                 <input type="email" id="email" name="email" placeholder="Email" required>
                 <br>
