@@ -1,0 +1,280 @@
+header {
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    /* background-color: blue; */
+    /* color: white; */
+}
+
+.logo {
+    height: 100%;
+}
+
+.icons {
+    position: relative;
+    height: 100%;
+    right: 2%;
+    float: right;
+}
+
+.icon {
+    position: relative;
+    top: 10%;
+    height: 80%;
+}
+
+.hidden{
+    position: fixed;
+    top:-1000px;
+    right:-1000px;
+}
+.NotificationsShow {
+    position: fixed;
+    right: 85px;
+    top: 11%;
+    width: 98px;
+    height: 200px;
+    text-align: right;
+    color: white;
+    
+    background-color: darkkhaki;
+    -webkit-animation-name: showNotification;
+    -webkit-animation-duration: 1s;
+    animation-name: showNotification;
+    animation-duration: 1s;
+}
+
+.NotificationNotShow {
+    position: fixed;
+    right: -100%;
+    top: -100%;
+    width: 196px;
+    text-align: right;
+    color:white;
+    background-color: darkkhaki;
+    -webkit-animation-name: notShowNotification;
+    -webkit-animation-duration: 1s;
+    animation-name: notShowNotification;
+    animation-duration: 1s;
+}
+
+.ProfileShow {
+    /* display: none; */
+    text-align: right;
+    position: fixed;
+    right: 25px;
+    top: 11%;
+    width: 200px;
+    height: 100px;
+    color:white;
+    background-color: burlywood;
+    -webkit-animation-name: showProfile;
+    -webkit-animation-duration: 1s;
+    animation-name: showProfile;
+    animation-duration: 1s;
+}
+
+.NotProfileShow{
+    /* display: none; */
+    text-align: right;
+    position: fixed;
+    right: -102%;
+    top: -111%;
+    background-color: burlywood;
+    color:white;
+    -webkit-animation-name: notShowProfile;
+    -webkit-animation-duration: 1s;
+    animation-name: notShowProfile;
+    animation-duration: 1s;
+}
+
+.top-bar {
+    position: absolute;
+    top: 100%;
+    right: 0%;
+}
+
+
+/* Animatii */
+@-webkit-keyframes showNotification {
+    0% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 1%;
+    }
+/* 
+    50% {
+        right: 85px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 200px;
+    }
+}
+
+@keyframes showNotification {
+    0% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 1%;
+    }
+/* 
+    50% {
+        right: 85px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 200px;
+    }
+}
+
+@-webkit-keyframes notShowNotification {
+    0% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 200px;
+    }
+    
+
+    /* 50% {
+        right: 85px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 0px;
+    }
+}
+
+@keyframes notShowNotification {
+    0% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 200px;
+    }
+    
+
+    /* 50% {
+        right: 85px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 85px;
+        top: 11%;
+        width: 98px;
+        height: 0px;
+    }
+}
+
+
+/* PROFILE SHOW */
+
+
+@-webkit-keyframes showProfile {
+    0% {
+        right: 25px;
+        top: 11%;
+        width: 200px;
+        height: 1%;
+    }
+/* 
+    50% {
+        right:55px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 25px;
+        top: 11%;
+        width: 200px;
+        height: 100px;
+}
+}
+@keyframes showProfile {
+    0% {
+        right: 25px;
+        top: 11%;
+        width: 200px;
+        height: 1%;
+    }
+/* 
+    50% {
+        right:55px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 25px;
+        top: 11%;
+        width: 200px;
+        height: 100px;
+}
+}
+
+@-webkit-keyframes notShowProfile {
+    0% {
+        right: 25px;
+        top: 11%;
+        width: 100px;
+        height: 200px;
+    }
+    
+
+    /* 50% {
+        right: 55px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 25px;
+        top: 11%;
+        width: 200px;
+        height: 0px;
+    }
+}
+
+@keyframes notShowProfile {
+    0% {
+        right: 25px;
+        top: 11%;
+        width: 200px;
+        height: 100px;
+    }
+    
+/* 
+    50% {
+        right: 55px;
+        top: 11%;
+        width: 1px;
+        height: 200px;
+    } */
+    100% {
+        right: 25px;    
+        top: 11%;
+        width: 200px;
+        height: 0px;
+    }
+}

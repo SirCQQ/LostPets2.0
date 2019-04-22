@@ -1,0 +1,6 @@
+.pet-card{
+    position: fixed;
+    height: 40%;
+    width: 20%;
+    background-color: lime;
+}

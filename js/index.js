@@ -15,6 +15,11 @@ function register() {
 }
 }
 
+
+
+
+
+
 function login() {
     var login = document.getElementById("login");
     if (login.classList[0] === "hidden") {
