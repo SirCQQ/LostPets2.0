@@ -1,6 +1,26 @@
 .pet-card{
+    /* display: none; */
     position: fixed;
-    height: 40%;
-    width: 20%;
-    background-color: lime;
+    height: 400px;
+    width: 300px;
+    background-color: burlywood;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
 }
+.info{display: none;}
+.pet-img{
+    position: relative;
+    height: 400px;
+    width: 300px;
+    display: none;
+}
+
+.map {
+    display: block;
+    position: relative;
+    top:200px;
+     height: 200px;
+     width: 300px; 
+     
+    }

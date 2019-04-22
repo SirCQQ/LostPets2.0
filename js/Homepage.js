@@ -54,6 +54,10 @@ function profile(){
 }
 function notification(){
     var profile = document.getElementById("profile");
+    console.log(profile);
+    console.log(profile.children[0].firstChild)
+
+    // console.log(profile.children[0].textContent)
     if(profile.classList[0]==='ProfileShow')
     {
         profile.classList.remove("ProfileShow");
