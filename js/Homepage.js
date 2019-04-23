@@ -68,3 +68,9 @@ function notification(){
         notificationFunction();
     }
 }
+
+function change (){
+    var card= document.getElementById('info');
+    card.cardList.remove('infoNotShow')
+    card.cardList.add('infoShow')
+}

@@ -1,26 +1,34 @@
 .pet-card{
     /* display: none; */
-    position: fixed;
-    height: 400px;
-    width: 300px;
+    position: relative;
+    height: auto;
+    widows: auto;
+    max-height: 400px;
+    max-width: 300px; 
     background-color: burlywood;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
     font-size: 17px;
+    display:inline-block;
+    }
+.info{display: none;
+padding: 10px;
 }
-.info{display: none;}
-.pet-img{
-    position: relative;
-    height: 400px;
-    width: 300px;
+.none{
     display: none;
 }
+.pet-img{
 
-.map {
+    position: absolute;
+    top:10px;
+    bottom: 0px;
+    height: 200px;
+    width: 300px;
+    /* display: none; */
+}
+ .pet-card:hover .info{
     display: block;
-    position: relative;
-    top:200px;
-     height: 200px;
-     width: 300px; 
-     
-    }
+}
+.pet-card:hover .pet-img{
+    display: none;
+}
