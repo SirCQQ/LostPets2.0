@@ -1,34 +1,6 @@
 .pet-card{
-    /* display: none; */
-    position: relative;
-    height: auto;
-    widows: auto;
-    max-height: 400px;
-    max-width: 300px; 
-    background-color: burlywood;
-    text-align: left;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 17px;
-    display:inline-block;
-    }
-.info{display: none;
-padding: 10px;
-}
-.none{
-    display: none;
-}
-.pet-img{
-
-    position: absolute;
-    top:10px;
-    bottom: 0px;
-    height: 200px;
-    width: 300px;
-    /* display: none; */
-}
- .pet-card:hover .info{
-    display: block;
-}
-.pet-card:hover .pet-img{
-    display: none;
+    position: fixed;
+    height: 40%;
+    width: 20%;
+    background-color: lime;
 }

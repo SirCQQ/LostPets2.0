@@ -1,41 +1,11 @@
 .body{
     position: fixed;;
     top:11%;
-    /* background-color: blue; */
-    color :white;
-    display: flex;
-    flex-wrap: nowrap;
-  /* background-color: DodgerBlue; */
+    background-color: blue;
 }
 
-.pet-card{
-    /* display: none; */
-    position: relative;
-    height: 400px;
-    width: 300px;
-    background-color: burlywood;
-    text-align: left;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 17px;
-    display:inline-block;
-    }
-    .infoNotShow{display: none;}
-    .infoShow{color:red;}
-.pet-img{
-    position: relative;
-    height: 200px;
-    width: 300px;
-    /* display: none; */
+.formular input,textarea{
+    /* position: relative; */
+    width: 500px;
+    /* height: 500px; */
 }
-#ma-ta{
-    position:absolute;
-    top:600px;
-}
-.map {
-   
-    position: relative;
-    /* top:200px; */
-     height: 200px;
-     width: 300px; 
-     
-    }
