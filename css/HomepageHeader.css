@@ -1,91 +1,96 @@
-header {
+/* header {
     position: absolute;
-    height: 10%;
+    height: 100px;
     width: 100%;
-    /* background-color: blue; */
-    /* color: white; */
+}
+
+ul {
+    list-style-type: none;
+    width: 100%;
+}
+
+li {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    border: solid black 2px;
+    border-radius: 25px 25px 25px 25px;
 }
 
 .logo {
     height: 100%;
 }
 
+
 .icons {
     position: relative;
     height: 100%;
-    right: 2%;
+    right: 30px;
     float: right;
+    display: inline-flex;
 }
 
 .icon {
     position: relative;
-    top: 10%;
-    height: 80%;
+    top: 10px;
+    height: 50%;
+    padding: 10px;
 }
 
-.hidden{
+.hidden {
     position: fixed;
-    top:-1000px;
-    right:-1000px;
+    top: -1000px;
+    right: -1000px;
 }
+
+.icon2{
+    position: relative;
+    height: 100%;
+}
+
 .NotificationsShow {
     position: fixed;
-    right: 85px;
-    top: 11%;
-    width: 98px;
-    height: 200px;
+    right: 145px;
+    top: 80px;
     text-align: right;
-    color: white;
-    
-    background-color: darkkhaki;
-    -webkit-animation-name: showNotification;
-    -webkit-animation-duration: 1s;
-    animation-name: showNotification;
-    animation-duration: 1s;
+    -webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 
 .NotificationNotShow {
+
     position: fixed;
-    right: -100%;
-    top: -100%;
-    width: 196px;
+    right: 145px;
+    top: 80px;
     text-align: right;
-    color:white;
-    background-color: darkkhaki;
-    -webkit-animation-name: notShowNotification;
-    -webkit-animation-duration: 1s;
-    animation-name: notShowNotification;
-    animation-duration: 1s;
+    -webkit-animation: swing-out-top-bck 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+    animation: swing-out-top-bck 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
 }
 
 .ProfileShow {
-    /* display: none; */
+
     text-align: right;
     position: fixed;
-    right: 25px;
-    top: 11%;
+    right: 60px;
+    top: 80px;
     width: 200px;
     height: 100px;
-    color:white;
-    background-color: burlywood;
-    -webkit-animation-name: showProfile;
-    -webkit-animation-duration: 1s;
-    animation-name: showProfile;
-    animation-duration: 1s;
+    -webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 
-.NotProfileShow{
-    /* display: none; */
+.NotProfileShow {
+
     text-align: right;
     position: fixed;
-    right: -102%;
-    top: -111%;
-    background-color: burlywood;
-    color:white;
-    -webkit-animation-name: notShowProfile;
-    -webkit-animation-duration: 1s;
-    animation-name: notShowProfile;
-    animation-duration: 1s;
+    right: 60px;
+    top: 80px;
+    width: 200px;
+    height: 100px;
+    -webkit-animation: swing-out-top-bck 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
+    animation: swing-out-top-bck 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) both;
 }
 
 .top-bar {
@@ -95,186 +100,82 @@ header {
 }
 
 
-/* Animatii */
-@-webkit-keyframes showNotification {
-    0% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 1%;
-    }
-/* 
-    50% {
-        right: 85px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
-    100% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 200px;
-    }
-}
 
-@keyframes showNotification {
+@-webkit-keyframes swing-in-top-fwd {
     0% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 1%;
+      -webkit-transform: rotateX(-100deg);
+              transform: rotateX(-100deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
     }
-/* 
-    50% {
-        right: 85px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
     100% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 200px;
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
     }
-}
-
-@-webkit-keyframes notShowNotification {
+  }
+  @keyframes swing-in-top-fwd {
     0% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 200px;
+      -webkit-transform: rotateX(-100deg);
+              transform: rotateX(-100deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes swing-out-top-bck {
+    0% {
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: rotateX(-100deg);
+              transform: rotateX(-100deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
+    }
+  }
+  @keyframes swing-out-top-bck {
+    0% {
+      -webkit-transform: rotateX(0deg);
+              transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: rotateX(-100deg);
+              transform: rotateX(-100deg);
+      -webkit-transform-origin: top;
+              transform-origin: top;
+      opacity: 0;
+    }
+  }
+
+
+  @media only screen and (max-width:900px)
+{
+    .logo{
+        display: none;
     }
     
-
-    /* 50% {
-        right: 85px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
-    100% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 0px;
-    }
-}
-
-@keyframes notShowNotification {
-    0% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 200px;
-    }
-    
-
-    /* 50% {
-        right: 85px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
-    100% {
-        right: 85px;
-        top: 11%;
-        width: 98px;
-        height: 0px;
-    }
-}
+} */
 
 
-/* PROFILE SHOW */
 
 
-@-webkit-keyframes showProfile {
-    0% {
-        right: 25px;
-        top: 11%;
-        width: 200px;
-        height: 1%;
-    }
-/* 
-    50% {
-        right:55px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
-    100% {
-        right: 25px;
-        top: 11%;
-        width: 200px;
-        height: 100px;
-}
-}
-@keyframes showProfile {
-    0% {
-        right: 25px;
-        top: 11%;
-        width: 200px;
-        height: 1%;
-    }
-/* 
-    50% {
-        right:55px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
-    100% {
-        right: 25px;
-        top: 11%;
-        width: 200px;
-        height: 100px;
-}
-}
-
-@-webkit-keyframes notShowProfile {
-    0% {
-        right: 25px;
-        top: 11%;
-        width: 100px;
-        height: 200px;
-    }
-    
-
-    /* 50% {
-        right: 55px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
-    100% {
-        right: 25px;
-        top: 11%;
-        width: 200px;
-        height: 0px;
-    }
-}
-
-@keyframes notShowProfile {
-    0% {
-        right: 25px;
-        top: 11%;
-        width: 200px;
-        height: 100px;
-    }
-    
-/* 
-    50% {
-        right: 55px;
-        top: 11%;
-        width: 1px;
-        height: 200px;
-    } */
-    100% {
-        right: 25px;    
-        top: 11%;
-        width: 200px;
-        height: 0px;
-    }
-}

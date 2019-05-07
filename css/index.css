@@ -1,11 +1,13 @@
 /*componente html */
-
+*{
+    margin: 0;
+    padding: 0;
+}
 header{
     position: absolute;
     height:12%;
-    top:0%;
-    left:0px;
-    right:0px;
+    /* left:0px;
+    right:0px; */
 }
 
 /* Id-ri  */
