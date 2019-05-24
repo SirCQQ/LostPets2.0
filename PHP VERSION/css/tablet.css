@@ -1,0 +1,197 @@
+@media screen and (max-width: 768px) {
+
+  li button {
+    position: relative;
+    height: 32px;
+    width: 100vw;
+    /* top: -2px; */
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+
+  }
+
+  li {
+    position: relative;
+    color: white;
+    background-color: black;
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    height: 30px;
+    width: 100vw;
+
+  }
+
+  .show-profile {
+    position: absolute;
+    top: 10vh;
+    right: auto;
+    -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  .hide-profile {
+    position: absolute;
+    top: 10vh;
+    right: auto;
+    -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  }
+
+  .show-not {
+    position: absolute;
+    top: 10vh;
+    right: auto;
+    -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  .hide-not {
+    position: absolute;
+    top: 10vh;
+    right: auto;
+    -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  }
+
+  .show-form {
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 80px 25px 80px 15px;
+    padding: 20px 0px 10px 0px;
+    margin: 0px 10vw;
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    transform: translate(0, 0);
+    min-width: 300px;
+    width: 60vw;
+    height: 55vh;
+    z-index: 1;
+    align-items: center;
+    text-align: center;
+    -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  .hide-form {
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 80px 25px 80px 15px;
+    padding: 20px 0px 10px 0px;
+    margin: 0px 10vw;
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    transform: translate(0, 0);
+    min-width: 300px;
+    width: 60vw;
+    height: 55vh;
+    z-index: 1;
+    align-items: center;
+    text-align: center;
+    -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+
+  }
+
+  .show-form textarea {
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(12, 236, 225, 0.363);
+    border: solid 2px rgba(21, 82, 79, 0.8);
+    height: 60px;
+    width: 250px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+
+  .hide-form textarea {
+    border-radius: 25px 25px 25px 25px;
+    background-color: rgba(12, 236, 225, 0.363);
+    border: solid 2px rgba(21, 82, 79, 0.8);
+    height: 60px;
+    width: 250px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+
+  body {
+    height: 100hv;
+    display: grid;
+    grid-template-rows: 10vh 90vh;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  main {
+    grid-area: main;
+    /* background-color: lightcoral; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+      'cards'
+      'map';
+  }
+
+  .cards {
+    /* display: none; */
+    text-align: center;
+    align-items: center;
+    grid-area: cards;
+    overflow: auto;
+    overflow-y: scroll hidden;
+    display: grid;
+    height: 60vh;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  header {
+    grid-area: header;
+    /* background-color: lightgreen; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "icons";
+  }
+
+  .icons>img {
+    text-align: center;
+    position: relative;
+    top: 10%;
+    right: -50%;
+    transform: translate( -50%,0);
+  }
+
+  .login-form {
+    text-align: center;
+    align-items: center;
+    grid-area: icons;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    grid-template-areas:
+      ". mail ."
+      ". pwd ."
+      ". log  ."
+      ". sig .";
+  }
+  /* .icons{
+    margin:0 25%;
+  } */
+}
