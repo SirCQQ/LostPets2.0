@@ -183,8 +183,24 @@ body {
 
 .show-form {
   position: absolute;
-  bottom: 25%;
-  right: 25%;
+  /* bottom: 25%;
+  right: 25%; */
+  z-index: 10;
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 80px 25px 80px 15px;
+    padding: 20px 0px 10px 0px;
+    margin: 0px 10vw;
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    transform: translate(0, 0);
+    min-width: 300px;
+    width: 60vw;
+    height: 55vh;
+    /* z-index: 1; */
+    align-items: center;
+    text-align: center;
   transform: translate(-50%, -50%);
   -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -207,8 +223,23 @@ body {
 
 .hide-form {
   position: absolute;
-  bottom: 25%;
-  right: 25%;
+  /* bottom: 25%;
+  right: 25%; */
+  z-index: 10;
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 80px 25px 80px 15px;
+    padding: 20px 0px 10px 0px;
+    margin: 0px 10vw;
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    transform: translate(0, 0);
+    min-width: 300px;
+    width: 60vw;
+    height: 55vh;
+    align-items: center;
+    text-align: center;
   transform: translate(-50%, -50%);
   grid-area: form;
   -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
@@ -273,6 +304,7 @@ p{
 
 .pet-card > img{
   width:250px;
+  height:100%;
   border-radius: 80px 25px 80px 15px ;
   grid-area:poza 
 }
@@ -313,7 +345,8 @@ text-align: center;}
   top:-30px; */
 }
 
-input[type=submit]{
+/* input[type=submit] */
+.buttons button{
   margin:10px 2px;
   border-radius: 80px 25px 80px 15px ;
   background-color: rgba(12, 236, 225, 0.363);
@@ -346,6 +379,77 @@ END PET CARD
 
 */
 
+.changeLocation-show{
+  position: absolute;
+  padding-top:100px;
+  z-index: 10;
+  background-color: white;
+  left:50vw;
+  width: 25vw;
+  height: 45vh;
+  border:2px solid black;
+  border-radius: 80px 25px 80px 15px;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%,0);
+  -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+.found-show{
+  padding-top:100px;
+  position: absolute;
+  z-index: 10;
+  left:50vw;
+  background-color: white;
+  width: 25vw;
+  height: 45vh;
+  border:2px solid black;
+  border-radius: 80px 25px 80px 15px;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%,0);
+  -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+.changeLocation-hidden{
+  position: absolute;
+  padding-top:100px;
+  z-index: 10;
+  background-color: white;
+  left:50vw;
+  width: 25vw;
+  height: 45vh;
+  border:2px solid black;
+  border-radius: 80px 25px 80px 15px;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%,0);
+  -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+
+}
+
+.found-hidden{ 
+  padding-top:100px;
+  position: absolute;
+  z-index: 10;
+  left:50vw;
+  background-color: white;
+  width: 25vw;
+  height: 45vh;
+  border:2px solid black;
+  border-radius: 80px 25px 80px 15px;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%,0);
+  -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+
+}
 
 @-webkit-keyframes flip-out-ver-left {
   0% {

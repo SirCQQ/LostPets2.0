@@ -61,6 +61,7 @@
   }
 
   .show-form {
+    z-index: 10;
     background-color: white;
     border: solid black 2px;
     border-radius: 80px 25px 80px 15px;
@@ -73,7 +74,7 @@
     min-width: 300px;
     width: 60vw;
     height: 55vh;
-    z-index: 1;
+    /* z-index: 1; */
     align-items: center;
     text-align: center;
     -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

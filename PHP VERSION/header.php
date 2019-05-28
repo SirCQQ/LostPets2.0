@@ -22,7 +22,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <!-- <link rel="stylesheet" href="./css/secondcssback.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
-    <script src="./js/functions.js"></script>
+   
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
 
     <title>LostPets</title>
@@ -33,7 +33,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <header>
 
         <img class='logo' src='img/logo3.png' alt="logo">
-
+        <?php  if(isset($_SESSION['userId'])){echo "<div id=\"userId\" hidden>".$_SESSION['userId']."</div>";}?>
 
         <?php
         if (isset($_SESSION['userId'])) {
@@ -60,16 +60,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     </form>
                 </li>
             </ul>
-            <!-- <div class="burger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <div class="nav">
-                <p>Formular</p>
-                <p>Notifications</p>
-                <p>Profile</p>
-            </div> -->
+            
         <?php
 
     } else {

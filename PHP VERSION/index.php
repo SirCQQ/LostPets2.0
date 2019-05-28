@@ -14,31 +14,69 @@ require 'header.php';
             <?php
             require './includes/cio.dbh.inc.php';
             getpets();
+            getTable();
             ?>
 
         </div>
         <div class="hidden" id="input">
-            <form action="#" method="post">
+            <form action="./includes/formPet.inc.php" method="post" enctype="multipart/form-data">
+                <?php if (isset($_SESSION['userId'])) {
+                    echo "<input name='userId' hidden value=\"" . $_SESSION['userId'] . "\"/>";
+                } ?>
                 <input type="text" name="name" id="animalName" placeholder="Nume animal">
                 <br>
                 <input type="text" name="animal" id="animal" placeholder="Ex. Pisica, caine, etc.">
                 <br>
-                <textarea rows="2" name="detalii" form="inputs" placeholder="Zgarda, medalion, semne distincte "></textarea>
+                <textarea rows="2" name="detalii" placeholder="Zgarda, medalion, semne distincte "></textarea>
                 <br>
                 <input type="text" name="zona" id="zona" placeholder="Zona in care a fost pierdut ">
                 <br>
-                <input type="number" name="recompensa" id="recompensa" placeholder="Recompensa">
+                <input type="number" name="recompensa" step="0.1" id="recompensa" placeholder="Recompensa">
+                <input type="number" value="" name="latLostForm" hidden id="latLostForm">
+                <input type="number" value="" name="lngLostForm" hidden id="lngLostForm">
                 <br>
-                <input type="file" name="img" id="img">
+                <input class="file" type="file" name="prfImg"><br>
+
                 <br>
-                <div id="harta-pierdut"></div>
-                <br>
-                <input type="submit" value="Submit">
+                <input type="submit" name="pet-submit" value="Submit">
             </form>
         </div>
+
+
+        <div class="hidden " id="found-pet">
+            <form action="./includes/found.php" method="post">
+                <lable for='src_fnd'>
+                    <h3> Click on the map where you find the pet</h3>
+                </lable>
+                <?php if (isset($_SESSION['userId'])) {
+                    echo "<input name='id_user_found' id='id_user_found' hidden value=\"" . $_SESSION['userId'] . "\"/>";
+                } ?>
+                <input type='text' name='id_pet_found' id='id_pet_found' value='' hidden>
+                <input type="text" name="locatieFound" placeholder="Found Location" style="z-index:'1'" id='src_fnd'>
+                <input type="number" step="0.0000000000001" name="latFound" id='latFound' value='' hidden>
+                <input type="number" step="0.0000000000001" name="lngFound" id='lngFound' value='' hidden>
+                <input type="submit" value="I HAVE FOUND THE PET">
+            </form>
+        </div>
+
+        <div class="hidden " id="change-pet">
+            <form action="./includes/update.php" method="post">
+                <label for='inp-chn'>
+                    <h3> Click on the map where you saw the pet</h3>
+                </label>
+                <input type='text' name='id_pet_change' id='id_pet_change' value='' hidden>
+                <input type="number" step="0.0000000000001" name="latChange" id='latChange' value='' hidden>
+                <input type="number" step="0.0000000000001" name="lngChange" id='lngChange' value='' hidden>
+                <input type="submit" id='inp-chn' value="I HAVE SEEN THE PET">
+            </form>
+        </div>
+
         <div id="mapid"></div>
         <div id="maplost"></div>
         <script src="./js/map.js"></script>
+
+
+
 
     <?php
 } else {

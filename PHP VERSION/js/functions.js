@@ -1,5 +1,4 @@
 function notificationFunction() {
-    console.log("clicked");
     let notification = document.getElementById("notifications");
     if (notification.classList[0] === "hidden") {
         notification.classList.remove("hidden");
@@ -8,6 +7,7 @@ function notificationFunction() {
         if (notification.classList[0] === "hide-not") {
             notification.classList.remove("hide-not");
             notification.classList.add("show-not");
+
         }
         else {
             notification.classList.remove("show-not");
@@ -19,26 +19,29 @@ function notificationFunction() {
 
 function formularFunction() {
     let formular = document.getElementById('input');
-    let map = document.getElementById('mapid');
-    let lost = document.getElementById('maplost');
+    // let map = document.getElementById('mapid');
+    // let lost = document.getElementById('maplost');
     if (formular.classList[0] === "hidden") {
         formular.classList.remove("hidden")
         formular.classList.add("show-form")
-        map.style.display="none";
-        lost.style.display="block";
+        clearMap(mymap);
+        // map.style.display="none";
+        // lost.style.display="block";
     }
     else {
         if (formular.classList[0] === "show-form") {
             formular.classList.remove("show-form")
             formular.classList.add("hide-form")
-            map.style.display="block";
-            lost.style.display="none";
+            clearMap(mymap);
+            // map.style.display="block";
+            // lost.style.display="none";
         } else {
             if (formular.classList[0] === "hide-form") {
                 formular.classList.remove("hide-form")
                 formular.classList.add("show-form")
-                map.style.display="none";
-                lost.style.display="block";
+                clearMap(mymap);
+                // map.style.display="none";
+                // lost.style.display="block";
             }
         }
     }
@@ -48,7 +51,6 @@ function profileFunction() {
     let profile = document.getElementById("profile");
     if (profile.classList[0] === "hidden") {
         profile.classList.remove("hidden");
-        console.log(profile.classList.length);
         profile.classList.add("show-profile");
     } else {
         if (profile.classList[0] === "hide-profile") {
@@ -61,9 +63,6 @@ function profileFunction() {
         }
     }
 }
-
-
-
 
 function profile() {
     let notification = document.getElementById("notifications");
@@ -84,9 +83,6 @@ function profile() {
     }
 }
 
-
-
-
 function notification() {
     let profile = document.getElementById("profile");
     let formular = document.getElementById('input');
@@ -96,7 +92,7 @@ function notification() {
             formular.classList.add("hide-form")
         }
         profile.classList.remove("show-profile");
-        if (profile.classList.length === 0){
+        if (profile.classList.length === 0) {
             profile.classList.add("hide-profile");
         }
         setTimeout(notificationFunction, 500);
@@ -105,9 +101,6 @@ function notification() {
         notificationFunction();
     }
 }
-
-
-
 
 function formular() {
     let profile = document.getElementById("profile");
@@ -133,22 +126,17 @@ function register() {
     if (register.classList[0] === "hidden") {
         register.classList.remove("hidden");
         register.classList.add("notHiddenRegister");
-    }else{
-    if (register.classList[0] === "hiddenRegister") {
-        register.classList.remove("hiddenRegister");
-        register.classList.add("notHiddenRegister");
-    }
-    else {
-        register.classList.remove("notHiddenRegister");
-        register.classList.add("hiddenRegister");
+    } else {
+        if (register.classList[0] === "hiddenRegister") {
+            register.classList.remove("hiddenRegister");
+            register.classList.add("notHiddenRegister");
+        }
+        else {
+            register.classList.remove("notHiddenRegister");
+            register.classList.add("hiddenRegister");
+        }
     }
 }
-}
-
-
-
-
-
 
 function login() {
     var login = document.getElementById("login");
@@ -156,37 +144,109 @@ function login() {
         login.classList.remove("hidden");
         login.classList.add("notHiddenLogin");
     }
-    else{
-
-    if (login.classList[0] === "hiddenLogin") {
-        login.classList.remove("hiddenLogin");
-        login.classList.add("notHiddenLogin");
-    }
     else {
-        login.classList.remove("notHiddenLogin");
-        login.classList.add("hiddenLogin");
+
+        if (login.classList[0] === "hiddenLogin") {
+            login.classList.remove("hiddenLogin");
+            login.classList.add("notHiddenLogin");
+        }
+        else {
+            login.classList.remove("notHiddenLogin");
+            login.classList.add("hiddenLogin");
+        }
     }
 }
-}
 
-function fromRegister(){
+function fromRegister() {
     let register = document.getElementById('register');
-    console.log("i was clicked");
-    if(register.classList[0]==='hidden')
-    {
+    if (register.classList[0] === 'hidden') {
         register.classList.remove('hidden');
         register.classList.add('register-form');
     }
-    else{
-        if(register.classList[0]==='register-form'){
+    else {
+        if (register.classList[0] === 'register-form') {
             register.classList.remove('register-form');
             register.classList.add('hiddenRegister');
         }
-        else{
-            if(register.classList[0]==='hiddenRegister'){
+        else {
+            if (register.classList[0] === 'hiddenRegister') {
                 register.classList.remove('hiddenRegister');
                 register.classList.add('register-form');
             }
         }
     }
 }
+
+function fromRegister() {
+    let register = document.getElementById('register');
+    if (register.classList[0] === 'hidden') {
+        register.classList.remove('hidden');
+        register.classList.add('register-form');
+    }
+    else {
+        if (register.classList[0] === 'register-form') {
+            register.classList.remove('register-form');
+            register.classList.add('hiddenRegister');
+        }
+        else {
+            if (register.classList[0] === 'hiddenRegister') {
+                register.classList.remove('hiddenRegister');
+                register.classList.add('register-form');
+            }
+        }
+    }
+}
+
+function foundPet(pet_id) {
+    let found = document.getElementById('found-pet');
+
+    if (found.classList[0] === 'hidden') {
+        found.classList.remove('hidden')
+        found.classList.add('found-show')
+        document.getElementById('id_pet_found').value = pet_id;
+        clearMap(mymap);
+    }
+
+
+    else {
+        if (found.classList[0] === 'found-show') {
+            found.classList.remove('found-show')
+            found.classList.add('found-hidden')
+            document.getElementById('id_pet_found').value = ''
+            clearMap(mymap);
+        }
+        else {
+            found.classList.remove('found-hidden')
+            found.classList.add('found-show')
+            document.getElementById('id_pet_found').value = pet_id;
+            clearMap(mymap);
+
+        }
+    }
+}
+function changePet(pet_id) {
+    let change = document.getElementById('change-pet');
+    if (change.classList[0] === 'changeLocation-show') {
+        change.classList.remove('changeLocation-show')
+        change.classList.add('changeLocation-hidden')
+        document.getElementById('id_pet_change').value = ''
+        clearMap(mymap);
+    }
+    else {
+        if (change.classList[0] === 'hidden') {
+            change.classList.remove('hidden')
+            change.classList.add('changeLocation-show')
+            document.getElementById('id_pet_change').value = pet_id;
+            clearMap(mymap);
+        }
+        else {
+
+            change.classList.remove('changeLocation-hidden')
+            change.classList.add('changeLocation-show')
+            document.getElementById('id_pet_change').value = pet_id;
+            clearMap(mymap);
+        }
+
+    }
+}
+
