@@ -1,7 +1,8 @@
 <?php
 require 'upload.php';
 
-function start(){
+function start()
+{
     $username = 'LostPets';
     $password = 'parola';
     $connection_string = 'localhost/xe';
@@ -14,14 +15,14 @@ function start(){
     }
 }
 
-function create_name(){
+function create_name()
+{
     $fileName = substr(md5(uniqid(rand(1, 6))), 0, 8);
-    // echo $fileName;
     return $fileName;
 }
 
-
-function getIdUser(){
+function getIdUser()
+{
     $conn = start();
     $stid = oci_parse($conn, 'SELECT COUNT(*) FROM userinfo ');
     if (!$stid) {
@@ -39,7 +40,8 @@ function getIdUser(){
     return $id + 1;
 }
 
-function getIdPet(){
+function getIdPet()
+{
     $conn = start();
     $stid = oci_parse($conn, 'SELECT COUNT(*) FROM allpets ');
     if (!$stid) {
@@ -54,20 +56,15 @@ function getIdPet(){
     $id = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)['COUNT(*)'];
     oci_free_statement($stid);
     oci_close($conn);
-    // echo $id;
+
     return $id + 1;
 }
 
-
-
-function login($mail, $pwd){
+function login($mail, $pwd)
+{
     $conn = start();
 
-    if ($conn) {
-        echo "conexiune buna \n";
-    }
-    // $mail="'".$mail."'";
-    echo $mail;
+    if ($conn) { }
     $sql = 'SELECT * FROM userinfo where email= :mail ';
     $stid = oci_parse($conn, $sql);
     oci_bind_by_name($stid, ':mail', $mail);
@@ -78,41 +75,47 @@ function login($mail, $pwd){
 
     oci_execute($stid);
     $row = oci_fetch_array($stid, OCI_ASSOC);
-    print_r($row);
     if ($row) {
-
-        print_r($row);
         $pwdCheck = password_verify($pwd, $row['USER_PASSWORD']);
         if ($pwdCheck === false) {
             oci_free_statement($stid);
             oci_close($conn);
-            header("Location: ../?error=wrongpwd");
+            $stat = array('status' => "Wrong Password");
+            header('Content-Type: application/json');
+            echo json_encode($stat);
             exit();
         } else if ($pwdCheck == true) {
             session_start();
             $_SESSION['userId'] = $row['USER_ID'];
             $_SESSION['userEmail'] = $row['EMAIL'];
-            header("Location: ../?login=success");
+            // header("Location: ../?login=success");
+            $stat = array('status' => "success");
+            header('Content-Type: application/json');
+            echo json_encode($stat);
             exit();
         } else {
             oci_free_statement($stid);
             oci_close($conn);
-            header("Location: ../?error=SOMETHINKELSE");
+            $stat = array('status' => "Somethink went wrong");
+            header('Content-Type: application/json',);
+            // echo json_encode($stat);
             exit();
         }
     } else {
         oci_free_statement($stid);
         oci_close($conn);
-        header("Location: ../?error=nouser");
+        $stat = array('status' => "No User");
+        header('Content-Type: application/json');
+        echo json_encode($stat);
         exit();
     }
     oci_free_statement($stid);
     oci_close($conn);
 }
 
-
-function getpets(){
-
+function getpets()
+{
+    $pets = array();
     $conn = start();
     $sql = 'SELECT * FROM allpets where pet_status=\'lost\' ORDER BY pet_id desc ';
     $stid = oci_parse($conn, $sql);
@@ -122,30 +125,27 @@ function getpets(){
         trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
     }
     while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-
-        print " <div class='pet-card' id=\"" . $row['PET_ID'] . "\">
-            <p class='name' pet_id=\"" . $row['PET_ID'] . "\" >Name:" . $row['PET_NAME'] .
-            "</p>
-            <img src='../PetPic/" . $row['POZA_IMG'] . "'  alt=''>
-            
-            <p class='pet-type' pet_id=\"" . $row['PET_ID'] . "\">Tip:" . $row["PET_TYPE"] .
-            "
-            <p class='pet-details' pet_id=\"" . $row['PET_ID'] . "\">Detalii:" . $row['PET_DETAILS'] . "</p>
-            <p class='pet-zone' pet_id=\"" . $row['PET_ID'] . "\">Zona:" .
-            $row['ZONA_PIERDUT'] . "</p>
-            <p class='pet-reward' pet_id=\"" . $row['PET_ID'] . "\">Recompensa:" . $row['REWARD'] . "</p>
-            <div class='buttons' pet_id=\"" . $row['PET_ID'] . "\">
-            <button pet_id=\"" . $row['PET_ID'] . "\" onClick='changePet(".$row['PET_ID'].")'>Change Location</button>
-            <button pet_id=\"" . $row['PET_ID'] . "\" onClick='foundPet(".$row['PET_ID'].")'>Found</button>
-            </div>
-            </div>";       
+        $info = getDateDeContact($row['PET_ID']);
+        $petInfo = array(
+            'pet_id' => $row['PET_ID'],
+            'pet_name' => $row['PET_NAME'],
+            'pet_photo' => $row['POZA_IMG'],
+            'pet_type' => $row['PET_TYPE'],
+            'pet_details' => $row['PET_DETAILS'],
+            'reward' => $row['REWARD'],
+            'zona_pierdut'=>$row['ZONA_PIERDUT']
+        );
+        $pet = array('pet' => $petInfo, 'contact' => $info);
+        array_push($pets, $pet);
     }
     oci_free_statement($stid);
     oci_close($conn);
+    return json_encode($pets);
 }
 
-function getTable(){
-
+function getTableAnimals()
+{
+    $table = array();
     $conn = start();
     $sql = 'SELECT * FROM allpets where pet_status=\'lost\' ORDER BY pet_id desc ';
     $stid = oci_parse($conn, $sql);
@@ -154,18 +154,16 @@ function getTable(){
         $e = oci_error($stid);
         trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
     }
-        echo "<table style='display:none'>";
+
     while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-        echo "<tr pet-id>
-        <td>".$row['PET_ID']."</td>
-        <td>".$row['LAT_LOST']."</td>
-        <td>".$row['LON_LOST']."</td>
-        </tr>";
+        $pet = array('pet_id' => $row['PET_ID'], 'lat_lost' => $row['LAT_LOST'], 'lng_lost' => $row['LON_LOST']);
+        array_push($table, $pet);
     }
-echo "</table>";
+    return json_encode($table);
 }
 
-function register($name, $prenume, $nrTel, $email, $pass, $file){
+function register($name, $prenume, $nrTel, $email, $pass, $file)
+{
 
     $conn = start();
     $sql = 'INSERT INTO userinfo (user_id, nume,prenume,email,nrtelefon,user_password,profile_img) VALUES(:id,:nume,:prenume,:email,:nrtel,:parola,:img)';
@@ -203,7 +201,8 @@ function register($name, $prenume, $nrTel, $email, $pass, $file){
     }
 }
 
-function formular($nume, $animal, $detalii, $zona, $recompensa, $latLost, $lngLost, $userId, $file){
+function formular($nume, $animal, $detalii, $zona, $recompensa, $latLost, $lngLost, $userId, $file)
+{
 
     $conn = start();
     $pet_id = getIdPet();
@@ -236,27 +235,28 @@ function formular($nume, $animal, $detalii, $zona, $recompensa, $latLost, $lngLo
     oci_bind_by_name($stid, ':reward', $recompensa);
     oci_bind_by_name($stid, ':date_lost', $date_lost);
     oci_bind_by_name($stid, ':pet_details', $detalii);
-    // oci_bind_by_name($stid, ':lat_lost', $latLost);
-    // oci_bind_by_name($stid, ':lon_lost', $lngLost);
+
     oci_bind_by_name($stid, ':pet_status', $pet_status);
 
     $r = oci_execute($stid);  // executes and commits
     if ($r) {
-        // upload_photo($file, $img, 2);
+
         oci_free_statement($stid);
         oci_close($conn);
-        addToUser($pet_id,$userId);
+        addToUser($pet_id, $userId);
+        zone($pet_id, $zona, $nume, 1);
         header("Location: ../index.php?addPetSuccessfully");
-        echo 'added in db';
+        exit();
     } else {
         oci_free_statement($stid);
         oci_close($conn);
-        echo "fail to add in db ";
-        // header("Location: ../index.php?addPetFail");
+
+        header("Location: ../index.php?addPetFail");
     }
 }
 
-function addToUser($pet_id, $userId){
+function addToUser($pet_id, $userId)
+{
     $conn = start();
     $sql = "INSERT INTO user_pet values(:userId,:pet_id)";
     $stid = oci_parse($conn, $sql);
@@ -269,9 +269,332 @@ function addToUser($pet_id, $userId){
     } else {
         oci_free_statement($stid);
         oci_close($conn);
-        echo "<p>FAIL TO CONNECT USER TO PET</p>";
     }
 }
 
+function found($pet_id, $user_id, $location_found, $lat_found, $lng_found)
+{
+    $conn = start();
+    $date_found = date("d/m/Y");
 
-// insert into allpets(pet_id,pet_name,pet_type,zona_pierdut,poza_img) values(4,'balteanu','caine','nicolina','hahaha');
+    $sql = 'UPDATE allpets SET zona_gasite=:location_found, finder_id=:user_id,
+     date_found=:date_found,lat_found=:lat_found,lon_found=:lon_found,pet_status=\'found\' WHERE pet_id=:pet_id ';
+    $stid = oci_parse($conn, $sql);
+    oci_bind_by_name($stid, ':location_found', $location_found);
+    oci_bind_by_name($stid, ':user_id', $user_id);
+    oci_bind_by_name($stid, ':date_found', $date_found);
+    oci_bind_by_name($stid, ':lat_found', $lat_found);
+    oci_bind_by_name($stid, ':lon_found', $lng_found);
+    oci_bind_by_name($stid, 'pet_id', $pet_id);
+    $r = oci_execute($stid);  // executes and commits
+    if ($r) {
+        oci_free_statement($stid);
+        oci_close($conn);
+       $stare=zone($pet_id, $location_found, getPetName($pet_id), 2);
+       if($stare===1){ 
+            $stat = array('status' => "Update Success");
+            header('Content-Type: application/json');
+            echo json_encode($stat);
+            exit();
+       }
+       else
+       {
+        oci_free_statement($stid);
+        oci_close($conn);
+        $stat = array('status' => "Update Fail");
+            header('Content-Type: application/json');
+            echo json_encode($stat);
+            exit();
+       }
+    } else {
+        oci_free_statement($stid);
+        oci_close($conn);
+        $stat = array('status' => "Update Fail");
+            header('Content-Type: application/json');
+            echo json_encode($stat);
+            exit();
+    }
+}
+
+function updateLocation($pet_id, $lat, $lon)
+{
+    $conn = start();
+
+    // echo "i got the data";
+    // echo $pet_id."\n".$lat."\n".$lon."\n";
+    $sql = 'UPDATE allpets SET lat_lost=:lat,lon_lost=:lon WHERE pet_id=:pet_id';
+    $stid = oci_parse($conn, $sql);
+    oci_bind_by_name($stid, ':pet_id', $pet_id);
+    oci_bind_by_name($stid, ':lat', $lat);
+    oci_bind_by_name($stid, ':lon', $lon);
+    $r = oci_execute($stid);  // executes and commits
+    if ($r) {
+        oci_free_statement($stid);
+        oci_close($conn);
+        $stat = array('status' => "Update Location Success");
+            header('Content-Type: application/json');
+            echo json_encode($stat);
+            exit();
+    } else {
+        oci_free_statement($stid);
+        oci_close($conn);
+        $stat = array('status' => "Fail to Change Location ");
+            header('Content-Type: application/json');
+            echo json_encode($stat);
+            // exit();
+    }
+}
+
+function getUserPhoto($userid)
+{
+    $conn = start();
+    $stid = oci_parse($conn, 'SELECT profile_img FROM userinfo WHERE user_id=:userid');
+    oci_bind_by_name($stid, ':userid', $userid);
+
+    $r = oci_execute($stid);
+    if ($r) {
+        $pic = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+        oci_free_statement($stid);
+        oci_close($conn);
+        // echo "///".$pic['PROFILE_IMG']."!!!";
+        return $pic['PROFILE_IMG'];
+        
+    } else {
+        return "BasicProfileImg";
+    }
+}
+
+function zone($id_pet, $zona, $nume_animal, $case)
+{
+    $conn = start();
+    $date = date("d/m/Y");
+    $state='found';
+    $sql1 = 'INSERT INTO notificari values(:id_pet,:zona,:nume,\'lost \',to_date(:date_n,\'DD/MM/YYYY\'))';
+    $sql2 = "UPDATE  notificari set status_pet=:found where pet_id=:id_pet ";
+
+    if ($case === 1) {
+        incrementInteresZona($zona,2);
+        $stid = oci_parse($conn, $sql1);
+        oci_bind_by_name($stid, ':zona', $zona);
+        oci_bind_by_name($stid, ':nume', $nume_animal);
+        oci_bind_by_name($stid, ':date_n', $date);
+    } else {
+        if ($case === 2) {
+            incrementInteresZona($zona,1);
+            $stid = oci_parse($conn, $sql2);
+            oci_bind_by_name($stid, ':found', $state);
+        }
+    }
+    
+    oci_bind_by_name($stid, ':id_pet', $id_pet);
+    
+    $r = oci_execute($stid);
+    if ($r) {
+        oci_free_statement($stid);
+        oci_close($conn);
+        return 1;
+    } else {
+        oci_free_statement($stid);
+        oci_close($conn);
+        return -1;
+    }
+}
+
+function getPetName($pet_id)
+{
+    $conn = start();
+    $stid = oci_parse($conn, 'SELECT Pet_name FROM allpets WHERE pet_id=:pet_id');
+    oci_bind_by_name($stid, ':pet_id', $pet_id);
+    $r = oci_execute($stid);
+    if ($r) {
+        $pic = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+        oci_free_statement($stid);
+        oci_close($conn);
+        return $pic['PET_NAME'];
+    }
+}
+
+function getNotifications()
+{
+    $notifications = array();
+    $conn = start();
+    $sql = 'SELECT * FROM notificari WHERE STATUS_PET=\'lost \' ORDER BY data_anunt desc ';
+    $stid = oci_parse($conn, $sql);
+    $r = oci_execute($stid);
+    if (!$r) {
+        $e = oci_error($stid);
+        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+    }
+    while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+        $not = array('pet_name' => $row['NUME_ANIMAL'], 'zona' => $row['NUME_ZONA'],'pet_id'=>$row['PET_ID']);
+        array_push($notifications, $not);
+    }
+    oci_free_statement($stid);
+    oci_close($conn);
+    return json_encode($notifications);
+}
+
+function getDateDeContact($id_pet)
+{
+    $conn = start();
+    $stid = oci_parse($conn, 'SELECT email , nrtelefon  FROM  userinfo  u
+     join USER_PET up on u.user_id=up.user_id join allpets a on a.pet_id=up.pet_id where a.Pet_id=:id_pet ');
+    oci_bind_by_name($stid, ':id_pet', $id_pet);
+    if (!$stid) {
+        $e = oci_error($conn);
+        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+    }
+    $r = oci_execute($stid);
+    if (!$r) {
+        $e = oci_error($stid);
+        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+    }
+    $id = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+    oci_free_statement($stid);
+    oci_close($conn);
+
+    $contact = array('nrTel' => $id["NRTELEFON"], 'email' =>  $id['EMAIL']);
+    return $contact;
+}
+function incrementInteresZona($zone,$case){
+    $conn=start();
+    $sql="SELECT * FROM ZoneDeInteres
+     WHERE nume_zona=:zona
+     ";
+    $stid=oci_parse($conn,$sql);
+    oci_bind_by_name($stid,':zona',$zone);
+    $r=oci_execute($stid);
+    if(!$r){
+        $e = oci_error($stid);
+        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+    }
+    $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+    // print_r($row);
+    $lostAnimals=$row["ANIMALE_DISPARUTE"];
+    $findAnimals=$row["ANIMALE_GASITE"];
+    $lostAnimals=$lostAnimals;
+    // echo $lostAnimals."   ".$findAnimals;
+    oci_free_statement($stid);
+    if($case===1){
+    $sql = "UPDATE ZoneDeInteres SET animale_gasite=:animale_gasite WHERE nume_zona=:zona";
+    $stid=oci_parse($conn,$sql);
+    $findAnimals=$findAnimals+1;
+    oci_bind_by_name($stid,':zona',$zone);
+    oci_bind_by_name($stid,':animale_gasite',$findAnimals);
+    $r1=oci_execute($stid);
+    }
+    if($case===2){
+    $sql = "UPDATE ZoneDeInteres SET animale_disparute=:animale_pierdute WHERE nume_zona=:zona";
+    $stid=oci_parse($conn,$sql);
+    $lostAnimals=$lostAnimals+1;
+    oci_bind_by_name($stid,':zona',$zone);
+    oci_bind_by_name($stid,':animale_pierdute',$lostAnimals);
+    $r2=oci_execute($stid);
+    }
+    oci_free_statement($stid);
+    oci_close($conn);
+}
+
+function createCSV($data)
+{
+    $table = json_decode($data, true);
+    $myfile = fopen("./Files/Statistici.csv", "r+") or die("Unable to open file!");
+    // echo "Am deschis fisierul";
+    file_put_contents("./Files/Statistici.csv",''); 
+    $txt = "Nume zona,Animale pierdute, Animale gasite \n";
+    fwrite($myfile, $txt);
+    $maxLost = 0;
+    $maxFound = 0;
+    $cartierPierdute = array();
+    $cartierGasite = array();
+    foreach ($table as $row) {
+        $txt = $row[0] . ',' . $row[1] . ',' . $row[2] . " \n";
+        fwrite($myfile, $txt);
+        // echo $txt."\n";
+
+        if ($row[1] == $maxLost) {
+            array_push($cartierPierdute, $row[0]);
+            // $row[0] ;  
+        } else {
+            if ($row[1] > $maxLost) {
+                $maxLost = $row[1];
+           
+                $cartierPierdute = array();
+                array_push($cartierPierdute, $row[0]);
+                // $row[0];
+            }
+        }
+        if ($row[2] == $maxFound) {
+            array_push($cartierGasite, $row[0]);
+        } else {
+            if ($row[2] > $maxFound) {
+                $maxFound = $row[2];
+                $cartierGasite = array();
+
+                array_push($cartierGasite, $row[0]);
+                // $row[0];
+            }
+        }
+    }
+
+
+    if ($maxLost > 0) {
+        fwrite($myfile, "Cele mai multe animale sunt pierdute in: ");
+        $txt = '';
+        foreach ($cartierPierdute as $cartier) {
+            if ($txt == '') {
+                $txt = $txt . $cartier;
+            } else {
+                $txt = $txt . ',' . $cartier;
+            }
+        }
+        $txt = $txt . "\n";
+        fwrite($myfile, $txt);
+    }
+
+
+    if ($maxFound > 0) {
+        fwrite($myfile, "Cele mai multe animale sunt gasite in: ");
+        $txt = '';
+        foreach ($cartierGasite as $cartier) {
+            if ($txt == '') {
+                $txt = $txt . $cartier;
+            } else {
+                $txt = $txt . ',' . $cartier;
+            }
+        }
+        $txt = $txt . "\n";
+        fwrite($myfile, $txt);
+    }
+
+
+    fclose($myfile);
+}
+
+function getZoneInfo(){
+    $conn=start();
+    $zone=array();
+    $sql="SELECT * FROM ZoneDeInteres ORDER BY nume_zona ASC";
+    $stid=oci_parse($conn,$sql);
+    $r=oci_execute($stid);
+   
+    while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
+        // $zona=array(
+        //     'nume_zona'=>$row["NUME_ZONA"]
+        //     ,'animale_disparute'=>$row['ANIMALE_DISPARUTE']
+        //     ,'animale_gasite'=>$row['ANIMALE_GASITE']
+        // );
+        $zona=array();
+        array_push($zona,$row["NUME_ZONA"]);
+        array_push($zona,$row["ANIMALE_DISPARUTE"]);
+        array_push($zona,$row["ANIMALE_GASITE"]);
+        array_push($zone,$zona);
+    }
+    oci_free_statement($stid);
+    oci_close($conn);
+
+    return json_encode($zone);
+}
+
+
+// require ('../FPDF/fpdf.php');

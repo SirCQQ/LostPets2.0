@@ -2,8 +2,9 @@
 
   <footer>
   </footer>
-
+  <script src="./js/full.js"></script>
+  <script src="./js/functions.js"></script>
+  <script src="./js/map.js"></script>
 </body>
-<script src="./js/functions.js"></script>
-    <script src="./js/index.js"></script>
+
 </html>

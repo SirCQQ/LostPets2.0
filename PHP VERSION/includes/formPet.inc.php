@@ -4,12 +4,9 @@
     {   
         if(isset($_FILES['prfImg'])){
             $file=$_FILES['prfImg'];
-            
-            // print_r($_FILES['prfImg']);
         }
         else {
-           
-            // print_r($_FILES['prfImg']);
+
             echo "NO FILE!!!";
         }
         $userId= $_POST['userId'];
@@ -20,12 +17,10 @@
         $recompensa=$_POST['recompensa'];
         $latLost=$_POST['latLostForm'];
         $lngLost=$_POST['lngLostForm'];
-
-        echo 'pet name: '.$petName.'  type: '.$animal.' detalii: '.$detalii.' zona: '.$zona.'  recompensa: '.$recompensa.' lat: '.$latLost.' lng: '.$lngLost;
-        echo "\n userId : ".$userId;
         if(empty($petName) ||empty($animal) ||empty($detalii) ||empty($zona) ||empty($recompensa) ||empty($latLost) ||empty($lngLost) )
         {
             // schimba cu header loction 
+            header("Location: ../?value=NotAllFieldsArFilled");
             echo "not all fields are filed";
         }
         else {

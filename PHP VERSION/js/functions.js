@@ -19,29 +19,24 @@ function notificationFunction() {
 
 function formularFunction() {
     let formular = document.getElementById('input');
-    // let map = document.getElementById('mapid');
-    // let lost = document.getElementById('maplost');
+  
     if (formular.classList[0] === "hidden") {
         formular.classList.remove("hidden")
         formular.classList.add("show-form")
         clearMap(mymap);
-        // map.style.display="none";
-        // lost.style.display="block";
+
     }
     else {
         if (formular.classList[0] === "show-form") {
             formular.classList.remove("show-form")
             formular.classList.add("hide-form")
             clearMap(mymap);
-            // map.style.display="block";
-            // lost.style.display="none";
+
         } else {
             if (formular.classList[0] === "hide-form") {
                 formular.classList.remove("hide-form")
                 formular.classList.add("show-form")
                 clearMap(mymap);
-                // map.style.display="none";
-                // lost.style.display="block";
             }
         }
     }
@@ -134,25 +129,6 @@ function register() {
         else {
             register.classList.remove("notHiddenRegister");
             register.classList.add("hiddenRegister");
-        }
-    }
-}
-
-function login() {
-    var login = document.getElementById("login");
-    if (login.classList[0] === "hidden") {
-        login.classList.remove("hidden");
-        login.classList.add("notHiddenLogin");
-    }
-    else {
-
-        if (login.classList[0] === "hiddenLogin") {
-            login.classList.remove("hiddenLogin");
-            login.classList.add("notHiddenLogin");
-        }
-        else {
-            login.classList.remove("notHiddenLogin");
-            login.classList.add("hiddenLogin");
         }
     }
 }

@@ -11,12 +11,6 @@ require 'header.php';
         <!-- <p class='show-me'> You are logged in!</p> -->
         <div class="cards">
 
-            <?php
-            require './includes/cio.dbh.inc.php';
-            getpets();
-            getTable();
-            ?>
-
         </div>
         <div class="hidden" id="input">
             <form action="./includes/formPet.inc.php" method="post" enctype="multipart/form-data">
@@ -29,14 +23,59 @@ require 'header.php';
                 <br>
                 <textarea rows="2" name="detalii" placeholder="Zgarda, medalion, semne distincte "></textarea>
                 <br>
-                <input type="text" name="zona" id="zona" placeholder="Zona in care a fost pierdut ">
+                <select  name="zona" id="zona" 
+                 placeholder="Zona in care a fost pierdut ">
+                 <option >Copou</option>
+                    <option >Ticau</option>
+                    <option >Zimbru</option>
+                    <option >Sararie</option>
+                    <option >Podu de fier</option>
+                    <option >Agronomie</option>
+                    <option >Targu cucului</option>
+                    <option >Tudor vladimirescu</option>
+                    <option >Bucsinescu</option>
+                    <option >Tatarasi nord</option>
+                    <option >Tatarasi sud</option>
+                    <option >Moara de vant</option>
+                    <option >Ciurchi</option>
+                    <option >Metalurgie</option>
+                    <option >Aviatiei</option>
+                    <option >Zona industriala dancu</option>
+                    <option >Baza 3</option>
+                    <option >Bularga</option>
+                    <option >Bucium</option>
+                    <option >Socola</option>
+                    <option >Frumoasa</option>
+                    <option >Manta rosie</option>
+                    <option >Podu ros</option>
+                    <option >Dimitrie cantemir</option>
+                    <option >Tesatura</option>
+                    <option >Nicolina 1</option>
+                    <option >Nicolina 2</option>
+                    <option >Cug 1</option>
+                    <option >Cug 2</option>
+                    <option >Galata 1</option>
+                    <option >Galata 2</option>
+                    <option >Podu de piatra</option>
+                    <option >Zona industriala sud</option>
+                    <option >Mircea cel batran</option>
+                    <option >Alexandru cel bun</option>
+                    <option >Gara</option>
+                    <option >Dacia</option>
+                    <option >Pacurari</option>
+                    <option >Canta</option>
+                    <option >Pacuret</option>
+                    <option >Moara de foc</option>
+                    <option>Alta locatie</option>
+
+                </select>
                 <br>
                 <input type="number" name="recompensa" step="0.1" id="recompensa" placeholder="Recompensa">
                 <input type="number" value="" name="latLostForm" hidden id="latLostForm">
                 <input type="number" value="" name="lngLostForm" hidden id="lngLostForm">
                 <br>
                 <input class="file" type="file" name="prfImg"><br>
-
+                <h2>Apasa pe harta pentru o pozitie mai exacta</h2>
                 <br>
                 <input type="submit" name="pet-submit" value="Submit">
             </form>
@@ -44,42 +83,87 @@ require 'header.php';
 
 
         <div class="hidden " id="found-pet">
-            <form action="./includes/found.php" method="post">
-                <lable for='src_fnd'>
-                    <h3> Click on the map where you find the pet</h3>
-                </lable>
+            <div >
+                <h3> Click on the map where you find the pet</h3>
                 <?php if (isset($_SESSION['userId'])) {
                     echo "<input name='id_user_found' id='id_user_found' hidden value=\"" . $_SESSION['userId'] . "\"/>";
                 } ?>
-                <input type='text' name='id_pet_found' id='id_pet_found' value='' hidden>
-                <input type="text" name="locatieFound" placeholder="Found Location" style="z-index:'1'" id='src_fnd'>
+                <input type='text' name='id_pet_found' id='id_pet_found' value=' ' hidden>
+                <select type="text" name="locatieFound" list="ZoneFound" placeholder="Found Location"  id='src_fnd'>
+                <!-- <datalist id="ZoneFound"> -->
+                    <option >Copou</option>
+                    <option >Ticau</option>
+                    <option >Zimbru</option>
+                    <option >Sararie</option>
+                    <option >Podu de fier</option>
+                    <option >Agronomie</option>
+                    <option >Targu cucului</option>
+                    <option >Tudor vladimirescu</option>
+                    <option >Bucsinescu</option>
+                    <option >Tatarasi nord</option>
+                    <option >Tatarasi sud</option>
+                    <option >Moara de vant</option>
+                    <option >Ciurchi</option>
+                    <option >Metalurgie</option>
+                    <option >Aviatiei</option>
+                    <option >Zona industriala dancu</option>
+                    <option >Baza 3</option>
+                    <option >Bularga</option>
+                    <option >Bucium</option>
+                    <option >Socola</option>
+                    <option >Frumoasa</option>
+                    <option >Manta rosie</option>
+                    <option >Podu ros</option>
+                    <option >Dimitrie cantemir</option>
+                    <option >Tesatura</option>
+                    <option >Nicolina 1</option>
+                    <option >Nicolina 2</option>
+                    <option >Cug 1</option>
+                    <option >Cug 2</option>
+                    <option >Galata 1</option>
+                    <option >Galata 2</option>
+                    <option >Podu de piatra</option>
+                    <option >Zona industriala sud</option>
+                    <option >Mircea cel batran</option>
+                    <option >Alexandru cel bun</option>
+                    <option >Gara</option>
+                    <option >Dacia</option>
+                    <option >Pacurari</option>
+                    <option >Canta</option>
+                    <option >Pacuret</option>
+                    <option >Moara de foc</option>
+                    <option>Alta locatie</option>
+
+                </select>
+
+                </datalist>
                 <input type="number" step="0.0000000000001" name="latFound" id='latFound' value='' hidden>
                 <input type="number" step="0.0000000000001" name="lngFound" id='lngFound' value='' hidden>
-                <input type="submit" value="I HAVE FOUND THE PET">
-            </form>
+                <input type="submit" name="submitFound" value="I HAVE FOUND THE PET" onclick="found()">
+            </div>
         </div>
 
         <div class="hidden " id="change-pet">
-            <form action="./includes/update.php" method="post">
+            <div>
                 <label for='inp-chn'>
                     <h3> Click on the map where you saw the pet</h3>
                 </label>
                 <input type='text' name='id_pet_change' id='id_pet_change' value='' hidden>
                 <input type="number" step="0.0000000000001" name="latChange" id='latChange' value='' hidden>
                 <input type="number" step="0.0000000000001" name="lngChange" id='lngChange' value='' hidden>
-                <input type="submit" id='inp-chn' value="I HAVE SEEN THE PET">
-            </form>
+                <input type="submit" name="submitChange" id='inp-chn' onclick="changeLocation()">
+            </div>
         </div>
-
+        <!-- <a href="./" download="index.php"><button>Download</button></a> -->
         <div id="mapid"></div>
         <div id="maplost"></div>
-        <script src="./js/map.js"></script>
+
 
 
 
 
     <?php
-} else {
+  } else {
     ?>
         <div id="register" class="hidden">
             <?php
@@ -164,8 +248,8 @@ require 'header.php';
         </div>
     <?php
 
-}
-?>
+ }
+ ?>
 
 
 </main>
