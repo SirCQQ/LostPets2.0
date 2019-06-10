@@ -246,6 +246,9 @@ require 'header.php';
                 <input class="file2" type="submit" name="signup-submit" value="Register">
             </form>
         </div>
+        <div class="img-main">
+            <img id="img-for-main" class="img-log" src="./img/Main for index.png"  alt="Image for main">
+        </div>
     <?php
 
  }

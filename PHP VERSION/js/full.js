@@ -29,10 +29,8 @@ function getProfilePic() {
     fetch(url)
         .then(resp => resp.text())
         .then(respText => {
-            // console.log(respText);
             profileImg = document.getElementById("profile_pic");
             if (respText.trim() !== '.') {
-                // console.log(respText);
                 profileImg.setAttribute('src', "./ProfilePic/" + respText);
             }
             else {
@@ -62,7 +60,6 @@ function getAllPets() {
         .then(resp => resp.json())
         .then(resp => {
             pets = resp;
-            console.log(resp)
            setTimeout(createPetsCards(),3000);
 
         })
@@ -75,7 +72,6 @@ function getLostAnimals() {
     fetch("http://localhost:80/api/lostAnimals")
         .then(resp => resp.json())
         .then(respJson => {
-            // console.log("Lost animals", respJson);
             animalePierdute = respJson;
         }).catch(err => {
             console.log("Error at : ", err)
@@ -88,17 +84,12 @@ function getNotifications() {
     fetch("http://localhost:80/api/notifications")
         .then(resp => resp.json())
         .then(respJson => {
-            // console.log("Pentru notificari: ", respJson)
             notificari = respJson;
-            // console.log(notificari)
-            // console.log(latlng);
 
-            // createNotification();
         })
         .catch(err => {
             console.log("Error at : ", err)
         })
-    // setTimeout(function(){createNotification()},2000);
 }
 
 function onMapClickPutMarker(e) {
@@ -132,7 +123,6 @@ function putMarkerAtPetPosition(idPet) {
 }
 
 function login(e) {
-    // e.preventDefault();
     let emailD = document.getElementById('mail').value;
     let passwordD = document.getElementById('pwd').value;
     let loginBody = {
@@ -241,7 +231,6 @@ function createPetCard(pet) {
     petReward.classList.add('pet-reward');
     petReward.setAttribute('pet-id', id);
     petReward.textContent = "Recompensa: " + pet.pet.reward;
-// console.log(pet.pet.reward)
     petZone.classList.add('pet-zone');
     petZone.setAttribute('pet-id', id);
     petZone.textContent = "Zona in care a fost pierdut: " + pet.pet.zona_pierdut;
@@ -328,7 +317,6 @@ function found(){
         lat_found:lat_found,
         lng_found:lng_found
     }
-    // console.log(info);
     fetch('/api/markAsFound',{
         method:'POST',
         body:JSON.stringify(info),
@@ -347,7 +335,6 @@ function found(){
     .catch(err=>{
         console.log("error at: ",err)
     })
-    // console.log(pet_id,user_id,location_found,lat_found,lng_found)
 }
 
 function changeLocation(){
@@ -359,9 +346,7 @@ function changeLocation(){
         lat:latChange.value,
         lng:lngChange.value
     }
-    console.log(changeData)
     let body=JSON.stringify(changeData);
-    // console.log(body)
     fetch('/api/updateLocation',
     {
         method:"POST",
@@ -392,11 +377,9 @@ function addMarker(lat,lng,mymap){
     lngFound.setAttribute('value',lng);
     latChange.setAttribute('value',lat);
     lngChange.setAttribute('value',lng);
-    console.log(latLost.value,lngLost.value)
 }
 
 getProfilePic();
 updatePetsAndNotificationsAndLocation();
 setInterval(function(){updatePetsAndNotificationsAndLocation()},10000);
 setInterval(function(){createNotification()},3000);
-// console.log('Pets in oage :'+petsInPage)

@@ -267,5 +267,46 @@
     animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   
   }
+  .img-log {
+    width: 100%;
+
+    position: fixed;
+    top: 20vh;
+    
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+  }
+  .register-form{
+    pointer-events:initial;
+    position: relative;
+      top:30%;
+      width :100%;
+      color: black;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 17px ;
+      font-weight: 700;
+      transform: translate(-50%, 0);
+      -webkit-animation: scale-in-hor-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: scale-in-hor-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    .hiddenRegister{
+      pointer-events:none;
+      position: relative;
+      top:30%;
+      width :100%;
+      color: black;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 17px ;
+      font-weight: 700;
+      transform: translate(-50%, 0);
+        -webkit-animation: scale-out-horizontal 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+              animation: scale-out-horizontal 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+      }
+    .img-log-hide{
+      animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   
+    }
 }

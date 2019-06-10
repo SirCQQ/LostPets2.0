@@ -5,7 +5,7 @@
 
 header {
   grid-area: header;
-  
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
@@ -22,15 +22,11 @@ li {
   color: black;
   background-color: rgb(12, 236, 225);
   border: solid 2px rgb(21, 82, 79);
-  /* background-color: rgba(12, 236, 225); */
-  /* background-color: lightseagreen;
-  border: solid 2px rgba(21, 82, 79); */
   /* border: 2px solid whitesmoke; */
   border-radius: 15px;
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
   font-size: 20px;
-  /* height: 30px; */
   line-height: 30px;
   width: 250px;
 
@@ -40,12 +36,9 @@ li button {
   position: relative;
   height: 30px;
   width: 250px;
-  /* top: -2px; */
-  /* left:-2px; */
   border-radius: 15px;
   background-color: rgb(12, 236, 225);
-  /* border: solid 2px rgb(21, 82, 79); */
-  border:0px;
+  border: 0px;
   color: black;
 
   text-align: center;
@@ -68,7 +61,7 @@ main {
 .icons img {
   border-radius: 50%;
   position: relative;
-  top:10%;
+  top: 10%;
   height: 7vh;
   line-height: 10vh;
   vertical-align: middle;
@@ -123,7 +116,6 @@ body {
 
 #mapid {
   grid-area: map;
-  /* display: none; */
 }
 
 .hidden {
@@ -131,12 +123,6 @@ body {
   grid-area: form;
   background-color: lightgray;
 }
-
-
-
-
-
-
 
 .login-form {
   grid-area: icons;
@@ -164,16 +150,13 @@ body {
   grid-area: sig
 }
 
-
-
-
-
 .show-form input[type=text],
 .show-form input[type=number],
 .show-form textarea,
 .hide-form input[type=text],
 .hide-form input[type=number],
-.hide-form textarea,select {
+.hide-form textarea,
+select {
   border-radius: 25px 25px 25px 25px;
   background-color: rgba(12, 236, 225, 0.363);
   border: solid 2px rgba(21, 82, 79, 0.8);
@@ -185,30 +168,30 @@ body {
 }
 
 .show-form {
+  pointer-events: initial;
   position: absolute;
-  /* bottom: 25%;
-  right: 25%; */
   z-index: 10;
-    background-color: white;
-    border: solid black 2px;
-    border-radius: 80px 25px 80px 15px;
-    padding: 20px 0px 10px 0px;
-    margin: 0px 10vw;
-    position: absolute;
-    top: 10vh;
-    right: 0;
-    transform: translate(0, 0);
-    min-width: 300px;
-    width: 60vw;
-    height: 55vh;
-    /* z-index: 1; */
-    align-items: center;
-    text-align: center;
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 80px 25px 80px 15px;
+  padding: 20px 0px 10px 0px;
+  margin: 0px 10vw;
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  transform: translate(0, 0);
+  min-width: 300px;
+  width: 60vw;
+  height: 55vh;
+  align-items: center;
+  text-align: center;
   transform: translate(-50%, -50%);
   -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 .show-not {
+  pointer-events: initial;
   position: absolute;
   top: 80px;
   right: 160px;
@@ -217,6 +200,7 @@ body {
 }
 
 .show-profile {
+  pointer-events: initial;
   position: absolute;
   top: 80px;
   right: 40px;
@@ -225,24 +209,23 @@ body {
 }
 
 .hide-form {
+  pointer-events:none;
   position: absolute;
-  /* bottom: 25%;
-  right: 25%; */
   z-index: 10;
-    background-color: white;
-    border: solid black 2px;
-    border-radius: 80px 25px 80px 15px;
-    padding: 20px 0px 10px 0px;
-    margin: 0px 10vw;
-    position: absolute;
-    top: 10vh;
-    right: 0;
-    transform: translate(0, 0);
-    min-width: 300px;
-    width: 60vw;
-    height: 55vh;
-    align-items: center;
-    text-align: center;
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 80px 25px 80px 15px;
+  padding: 20px 0px 10px 0px;
+  margin: 0px 10vw;
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  transform: translate(0, 0);
+  min-width: 300px;
+  width: 60vw;
+  height: 55vh;
+  align-items: center;
+  text-align: center;
   transform: translate(-50%, -50%);
   grid-area: form;
   -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
@@ -251,6 +234,7 @@ body {
 }
 
 .hide-not {
+  pointer-events:none;
   position: absolute;
   top: 80px;
   right: 160px;
@@ -259,6 +243,7 @@ body {
 }
 
 .hide-profile {
+  pointer-events:none;
   position: absolute;
   top: 80px;
   right: 40px;
@@ -277,151 +262,159 @@ PET CARD
 */
 
 
-.pet-card{
-  right:-15%;
-  display:grid;
+.pet-card {
+  right: -15%;
+  display: grid;
   position: relative;
-  border : 2px solid black;
-  width:250px; 
+  border: 2px solid black;
+  width: 250px;
   height: 375px;
-  border-radius: 80px 25px 80px 15px ;
+  border-radius: 80px 25px 80px 15px;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 2fr;
   background-color: rgba(12, 236, 225, 0.363);
   border: solid 2px rgba(21, 82, 79, 0.8);
-  grid-template-areas: 
-  "name"
-  "poza"
-  "poza"
-  "poza"
-  "poza"
-  "buttons"
+  grid-template-areas:
+    "name"
+    "poza"
+    "poza"
+    "poza"
+    "poza"
+    "buttons"
 }
 
-p{
+p {
   position: relative;
-  left:10px;
+  left: 10px;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   font-size: 15px;
   pointer-events: none;
 }
 
-.contact-info{
-  display:none;
+.contact-info {
+  display: none;
 }
-.pet-card > img{
-  width:250px;
-  height:100%;
-  border-radius: 80px 25px 80px 15px ;
-  grid-area:poza ;
+
+.pet-card>img {
+  width: 250px;
+  height: 100%;
+  border-radius: 80px 25px 80px 15px;
+  grid-area: poza;
   pointer-events: none;
 }
-.pet-card:hover  .pet-type
-{
-  display: block;
-  pointer-events: none;
-}
-.pet-card:hover  .nr_tel
-{
-  display: block;
-  pointer-events: none;
-}
-.pet-card:hover  .email
-{
+
+.pet-card:hover .pet-type {
   display: block;
   pointer-events: none;
 }
 
-.name{grid-area: name;
-text-align: center;
-pointer-events: none;
+.pet-card:hover .nr_tel {
+  display: block;
+  pointer-events: none;
 }
 
-.pet-card:hover  .pet-details
-{
+.pet-card:hover .email {
+  display: block;
+  pointer-events: none;
+}
+
+.name {
+  grid-area: name;
+  text-align: center;
+  pointer-events: none;
+}
+
+.pet-card:hover .pet-details {
   display: block;
   pointer-events: none;
 
 }
-.pet-card:hover .pet-zone{
+
+.pet-card:hover .pet-zone {
   display: block;
   pointer-events: none;
 
 }
+
 .pet-card:hover .pet-reward {
   display: block;
   pointer-events: none;
 
 }
-.pet-card:hover img{
+
+.pet-card:hover img {
   display: none;
   pointer-events: none;
 }
 
-.pet-details,.pet-type,.pet-zone,.pet-reward{
+.pet-details,
+.pet-type,
+.pet-zone,
+.pet-reward {
   display: none;
   pointer-events: none;
 }
 
-.pet-card > .buttons{
+.pet-card>.buttons {
   display: inline-flex;
   grid-area: buttons;
 
 }
-.pet-card:hover  .contact-info
-{
+
+.pet-card:hover .contact-info {
   display: block;
   pointer-events: none;
 }
 
 /* input[type=submit] */
-.buttons button{
-  margin:10px 2px;
-  border-radius: 80px 25px 80px 15px ;
+.buttons button {
+  margin: 10px 2px;
+  border-radius: 80px 25px 80px 15px;
   background-color: rgba(12, 236, 225, 0.363);
   border: solid 2px rgba(21, 82, 79, 0.8);
-  width:115px;
+  width: 115px;
   height: 50px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 13px;
   font-weight: 700;
 }
 
-input[type=file]::-webkit-file-upload-button{
-  margin:0px 5px;
-  border-radius: 80px 25px 80px 15px ;
+input[type=file]::-webkit-file-upload-button {
+  margin: 0px 5px;
+  border-radius: 80px 25px 80px 15px;
   background-color: rgba(12, 236, 225, 0.363);
   border: solid 2px rgba(21, 82, 79, 0.8);
-  width:140px;
+  width: 140px;
   height: 30px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 15px;
   font-weight: 700;
 }
 
-input[type=submit]{
-  margin:10px 2px;
-  border-radius: 80px 25px 80px 15px ;
+input[type=submit] {
+  margin: 10px 2px;
+  border-radius: 80px 25px 80px 15px;
   background-color: rgba(12, 236, 225, 0.363);
   border: solid 2px rgba(21, 82, 79, 0.8);
-  width:200px;
+  width: 200px;
   height: 50px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 13px;
   font-weight: 700;
 }
-input[type=text]{
-  margin:10px 2px;
-  border-radius: 80px 25px 80px 15px ;
+
+input[type=text] {
+  margin: 10px 2px;
+  border-radius: 80px 25px 80px 15px;
   background-color: rgba(12, 236, 225, 0.363);
   border: solid 2px rgba(21, 82, 79, 0.8);
-  width:200px;
+  width: 200px;
   height: 50px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 13px;
   font-weight: 700;
-  text-align:center;
+  text-align: center;
   font-size: 20px;
 }
 
@@ -433,75 +426,78 @@ END PET CARD
 
 */
 
-.changeLocation-show{
+.changeLocation-show {
   position: absolute;
-  padding-top:100px;
+  padding-top: 100px;
   z-index: 10;
   background-color: white;
-  left:50vw;
+  left: 50vw;
   width: 25vw;
   height: 45vh;
-  border:2px solid black;
+  border: 2px solid black;
   border-radius: 80px 25px 80px 15px;
   align-items: center;
   text-align: center;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   pointer-events: initial;
   -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
 }
 
-.found-show{
-  padding-top:100px;
+.found-show {
+  pointer-events: initial;
+  padding-top: 100px;
   position: absolute;
   z-index: 10;
-  left:50vw;
+  left: 50vw;
   background-color: white;
   width: 25vw;
   height: 45vh;
-  border:2px solid black;
+  border: 2px solid black;
   border-radius: 80px 25px 80px 15px;
   align-items: center;
   text-align: center;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
 }
 
-.changeLocation-hidden{
+.changeLocation-hidden {
+  pointer-events: none;
   position: absolute;
-  padding-top:100px;
+  padding-top: 100px;
   z-index: 10;
   background-color: white;
-  left:50vw;
+  left: 50vw;
   width: 25vw;
   height: 45vh;
-  border:2px solid black;
+  border: 2px solid black;
   border-radius: 80px 25px 80px 15px;
   align-items: center;
   text-align: center;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   pointer-events: none;
   -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
 }
 
-.found-hidden{ 
-  padding-top:100px;
+.found-hidden {
+  pointer-events:none;
+  padding-top: 100px;
   position: absolute;
   z-index: 10;
-  left:50vw;
+  left: 50vw;
   background-color: white;
   width: 25vw;
   height: 45vh;
-  border:2px solid black;
+  border: 2px solid black;
   border-radius: 80px 25px 80px 15px;
   align-items: center;
   text-align: center;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 

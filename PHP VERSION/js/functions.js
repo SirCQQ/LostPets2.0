@@ -116,58 +116,25 @@ function formular() {
     }
 }
 
-function register() {
-    var register = document.getElementById("register");
-    if (register.classList[0] === "hidden") {
-        register.classList.remove("hidden");
-        register.classList.add("notHiddenRegister");
-    } else {
-        if (register.classList[0] === "hiddenRegister") {
-            register.classList.remove("hiddenRegister");
-            register.classList.add("notHiddenRegister");
-        }
-        else {
-            register.classList.remove("notHiddenRegister");
-            register.classList.add("hiddenRegister");
-        }
-    }
-}
-
 function fromRegister() {
     let register = document.getElementById('register');
+    let img =document.getElementById('img-for-main');
     if (register.classList[0] === 'hidden') {
         register.classList.remove('hidden');
         register.classList.add('register-form');
+        img.classList.add('img-log-hide');
     }
     else {
         if (register.classList[0] === 'register-form') {
             register.classList.remove('register-form');
             register.classList.add('hiddenRegister');
+            img.classList.remove('img-log-hide');
         }
         else {
             if (register.classList[0] === 'hiddenRegister') {
                 register.classList.remove('hiddenRegister');
                 register.classList.add('register-form');
-            }
-        }
-    }
-}
-
-function fromRegister() {
-    let register = document.getElementById('register');
-    if (register.classList[0] === 'hidden') {
-        register.classList.remove('hidden');
-        register.classList.add('register-form');
-    }
-    else {
-        if (register.classList[0] === 'register-form') {
-            register.classList.remove('register-form');
-            register.classList.add('hiddenRegister');
-        }
-        else {
-            if (register.classList[0] === 'hiddenRegister') {
-                register.classList.remove('hiddenRegister');
-                register.classList.add('register-form');
+                img.classList.add('img-log-hide');
             }
         }
     }
