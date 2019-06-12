@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    border: 2px solid black;
+    border-radius: 25px 25px 25px 25px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 250px;
+  }
+  
+  body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-areas:
+      "logo .    .    icons"
+      "mapid body body body"
+      "footer footer footer footer";
+  }
+  
+  input {
+    width: 300px;
+    height: 40px;
+    border-radius: 20px 20px 20px 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: lightgrey;
+    border: 2px solid rgb(156, 156, 156)
+  }
+  
+  textarea {
+    width: 300px;
+    height: 80px;
+    border-radius: 20px 20px 20px 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: lightgrey;
+    border: 2px solid rgb(156, 156, 156)
+  }
+  
+  
+  .logo {
+    position: relative;
+    grid-area: logo;
+    height: 100%;
+    width: 300px;
+  }
+  
+  .icons {
+  
+    position: relative;
+    grid-area: icons;
+    height: 70%;
+    margin: 0px 10px 0px 10px;
+    display: grid;
+    line-height: 178.8px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "form not profile";
+  
+  }
+  
+  .form {
+    margin: 0px 5px;
+    height: 50px;
+    grid-area: form;
+    line-height: 178.8px;
+    z-index: 5;
+  }
+  
+  .not {
+    margin: 0px 5px;
+    height: 50px;
+    grid-area: not;
+    line-height: 178.8px;
+    z-index: 5;
+  }
+  
+  .profile {
+    margin: 0px 5px;
+    height: 50px;
+    grid-area: profile;
+    line-height: 80px;
+    z-index: 5;
+  }
+  
+  .body {
+    grid-area: body;
+    background-color: lightgreen;
+  }
+  
+  .footer {
+    grid-area: footer;
+    background-color: lightcoral;
+  }
+  
+  
+  .hidden {
+    display: none;
+    grid-area: form;
+    background-color: lightgray;
+  }
+  
+  .logout {
+    position: relative;
+    border-radius: 25px 25px 25px 25px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid black;
+    background-color: lightblue;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .show-form {
+    position: absolute;
+    bottom:25%;
+    right:25%;
+    transform: translate(-50%, -50%);
+    -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  
+  .show-not {
+    position: absolute;
+    top: 80px;
+    right: 160px;
+    -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    /* display: none; */
+  }
+  
+  .show-profile {
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  
+  .hide-form {
+    position: absolute;
+    bottom:25%;
+    right:25%;
+    transform: translate(-50%, -50%);
+    grid-area: form;
+    -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  
+  }
+  
+  .hide-not {
+    position: absolute;
+    top: 80px;
+    right: 160px;
+    -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  }
+  
+  .hide-profile {
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  }
+  
+  #mapid {
+    grid-area: mapid;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    /* background-color: lightblue; */
+  }
+  
+  @-webkit-keyframes flip-out-ver-left {
+    0% {
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0);
+      opacity: 1;
+    }
+  
+    100% {
+      -webkit-transform: rotateY(-70deg);
+      transform: rotateY(-70deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes flip-out-ver-left {
+    0% {
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0);
+      opacity: 1;
+    }
+  
+    100% {
+      -webkit-transform: rotateY(-70deg);
+      transform: rotateY(-70deg);
+      opacity: 0;
+    }
+  }
+  
+  @-webkit-keyframes flip-in-ver-left {
+    0% {
+      -webkit-transform: rotateY(80deg);
+      transform: rotateY(80deg);
+      opacity: 0;
+    }
+  
+    100% {
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes flip-in-ver-left {
+    0% {
+      -webkit-transform: rotateY(80deg);
+      transform: rotateY(80deg);
+      opacity: 0;
+    }
+  
+    100% {
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0);
+      opacity: 1;
+    }
+  }
+  
