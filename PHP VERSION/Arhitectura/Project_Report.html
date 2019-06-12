@@ -1,0 +1,43 @@
+<h1>Lost Pets</h1>
+<p>&nbsp;</p>
+<div>
+<h4>1.Introduction</h4>
+<h4>2.Structure</h4>
+<h4>3.Flow</h4>
+<p>&nbsp;</p>
+</div>
+<div>
+<h2>1.Introduction</h2>
+<p>Proiect la materia Tehnologii Web ce consta intr-o aplicatie web pentru persoanele care si-au pierdut animalul de companie.</p>
+<h2>2.Structure</h2>
+<p><strong>2.1. Index.php</strong></p>
+<p>&nbsp;</p>
+<p><strong>2.2. Rute.php</strong></p>
+<p>Se returneaza toate animalele din baza de date.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;doar animalele pierdute pentru notificari.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;toate notificarile din tabel din bd.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;poza de profil bazata pe id-ul userului.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;toate datele despre zone,nume,animale pierdute, animale gasite.</p>
+<p>Se returneaza success sau eroare, se face update la locatie si se&nbsp;marcheaza animalul ca fiind gasit ca sa nu mai fie afisat&nbsp;</p>
+<p><strong>2.3 Js.full</strong></p>
+<p>getProfilePic(): face un fetch la userPhoto si id-ului userului curent si da return la numele pozei lui si o seteaza</p>
+<p>getAllPets():&nbsp;face fetch la /getAllPets si pe lune in variabila nu face fetch si la latitudine si longitudine</p>
+<p>getLostAnimals():&nbsp;face fetch la latitudine si longitudine de la fiecare animal prin /getLostPets</p>
+<p>getNotification():&nbsp;face fetch la /getNotification la notificatii</p>
+<p>onMapClickPutMarker():in functie de 3 conditii daca una din ele e indeplinita te lasa sa pui marker pe harta</p>
+<p>putMarkerAtPetPosition():&nbsp;pune marker la pozitia cursorului <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; e apelata in onMapClickPutMarker</p>
+<p>login():&nbsp;Face fetch la /login in functie de raspuns face refresh</p>
+<p>calculateIfThePointIsInTheCircle():&nbsp;calculeaza daca pozitia ta actuala are pe o raza de 2 km animale pierdute</p>
+<p>createNotifications():creaza notificatii pe baza pozitiei tale si a animalelor pierdute care sunt in aria de 2km</p>
+<p>createPetCard():creaza un card pentru UN SINGUR animal</p>
+<p>updatePetsAndNotificationsAndLocation():contopeste mai multe functii in una ca sa fie un singur apel de funtie nu 3</p>
+<p>createPetsCards():parcurge lista cu animale si apeleaza funtiea createPetCard pentru fiecare</p>
+<p>found():&nbsp;fetch la /markAsFound ca sa marcheze animalul ca gasit iar la urmatoru fetch este inlaturat</p>
+<p>changeLocation():face fetch la /changeLocation si schima cartierul si coordonatele ultimei locatii in care a fost vazut animalul</p>
+<p>addMarker():cand dai click pe un animal ii adauga locatia pe harta si schimba locatia pe care o vezi pe harta&nbsp;cu locatia animalului (zona in care a fost pierdut sau vazut ultima data )</p>
+<p>&nbsp;</p>
+<p><strong>2.4.Includes</strong></p>
+<p>&nbsp;</p>
+<h2>3.Flow</h2>
+<p>&nbsp;</p>
+</div>

@@ -25,48 +25,49 @@ require 'header.php';
                 <br>
                 <select  name="zona" id="zona" 
                  placeholder="Zona in care a fost pierdut ">
-                 <option >Copou</option>
-                    <option >Ticau</option>
-                    <option >Zimbru</option>
-                    <option >Sararie</option>
-                    <option >Podu de fier</option>
+                    <option>Alta locatie</option>
                     <option >Agronomie</option>
-                    <option >Targu cucului</option>
-                    <option >Tudor vladimirescu</option>
-                    <option >Bucsinescu</option>
-                    <option >Tatarasi nord</option>
-                    <option >Tatarasi sud</option>
-                    <option >Moara de vant</option>
-                    <option >Ciurchi</option>
-                    <option >Metalurgie</option>
                     <option >Aviatiei</option>
-                    <option >Zona industriala dancu</option>
+                    <option >Alexandru cel bun</option>
                     <option >Baza 3</option>
                     <option >Bularga</option>
                     <option >Bucium</option>
-                    <option >Socola</option>
-                    <option >Frumoasa</option>
-                    <option >Manta rosie</option>
-                    <option >Podu ros</option>
-                    <option >Dimitrie cantemir</option>
-                    <option >Tesatura</option>
-                    <option >Nicolina 1</option>
-                    <option >Nicolina 2</option>
+                    <option >Bucsinescu</option>
                     <option >Cug 1</option>
                     <option >Cug 2</option>
+                    <option >Copou</option>
+                    <option >Ciurchi</option>
+                    <option >Canta</option>
+                    <option >Dimitrie cantemir</option>
+                    <option >Dacia</option>
+                    <option >Frumoasa</option>
                     <option >Galata 1</option>
                     <option >Galata 2</option>
-                    <option >Podu de piatra</option>
-                    <option >Zona industriala sud</option>
-                    <option >Mircea cel batran</option>
-                    <option >Alexandru cel bun</option>
                     <option >Gara</option>
-                    <option >Dacia</option>
-                    <option >Pacurari</option>
-                    <option >Canta</option>
-                    <option >Pacuret</option>
+                    <option >Moara de vant</option>
+                    <option >Metalurgie</option>
                     <option >Moara de foc</option>
-                    <option>Alta locatie</option>
+                    <option >Mircea cel batran</option>
+                    <option >Manta rosie</option>
+                    <option >Nicolina 1</option>
+                    <option >Nicolina 2</option>
+                    <option >Podu de fier</option>
+                    <option >Podu ros</option>
+                    <option >Podu de piatra</option>
+                    <option >Pacurari</option>
+                    <option >Pacuret</option>
+                    <option >Palas</option>
+                    <option >Socola</option>
+                    <option >Sararie</option>
+                    <option >Tesatura</option>
+                    <option >Ticau</option>
+                    <option >Targu cucului</option>
+                    <option >Tudor vladimirescu</option>
+                    <option >Tatarasi nord</option>
+                    <option >Tatarasi sud</option>
+                    <option >Zimbru</option>
+                    <option >Zona industriala dancu</option>
+                    <option >Zona industriala sud</option>
 
                 </select>
                 <br>
@@ -91,48 +92,48 @@ require 'header.php';
                 <input type='text' name='id_pet_found' id='id_pet_found' value=' ' hidden>
                 <select type="text" name="locatieFound" list="ZoneFound" placeholder="Found Location"  id='src_fnd'>
                 <!-- <datalist id="ZoneFound"> -->
-                    <option >Copou</option>
-                    <option >Ticau</option>
-                    <option >Zimbru</option>
-                    <option >Sararie</option>
-                    <option >Podu de fier</option>
-                    <option >Agronomie</option>
-                    <option >Targu cucului</option>
-                    <option >Tudor vladimirescu</option>
-                    <option >Bucsinescu</option>
-                    <option >Tatarasi nord</option>
-                    <option >Tatarasi sud</option>
-                    <option >Moara de vant</option>
-                    <option >Ciurchi</option>
-                    <option >Metalurgie</option>
-                    <option >Aviatiei</option>
-                    <option >Zona industriala dancu</option>
-                    <option >Baza 3</option>
-                    <option >Bularga</option>
-                    <option >Bucium</option>
-                    <option >Socola</option>
-                    <option >Frumoasa</option>
-                    <option >Manta rosie</option>
-                    <option >Podu ros</option>
-                    <option >Dimitrie cantemir</option>
-                    <option >Tesatura</option>
-                    <option >Nicolina 1</option>
-                    <option >Nicolina 2</option>
-                    <option >Cug 1</option>
-                    <option >Cug 2</option>
-                    <option >Galata 1</option>
-                    <option >Galata 2</option>
-                    <option >Podu de piatra</option>
-                    <option >Zona industriala sud</option>
-                    <option >Mircea cel batran</option>
-                    <option >Alexandru cel bun</option>
-                    <option >Gara</option>
-                    <option >Dacia</option>
-                    <option >Pacurari</option>
-                    <option >Canta</option>
-                    <option >Pacuret</option>
-                    <option >Moara de foc</option>
-                    <option>Alta locatie</option>
+    <option >Agronomie</option>
+    <option >Aviatiei</option>
+    <option >Alexandru cel bun</option>
+    <option >Baza 3</option>
+    <option >Bularga</option>
+    <option >Bucium</option>
+    <option >Bucsinescu</option>
+    <option >Cug 1</option>
+    <option >Cug 2</option>
+    <option >Copou</option>
+    <option >Ciurchi</option>
+    <option >Canta</option>
+    <option >Dimitrie cantemir</option>
+    <option >Dacia</option>
+    <option >Frumoasa</option>
+    <option >Galata 1</option>
+    <option >Galata 2</option>
+    <option >Gara</option>
+    <option >Moara de vant</option>
+    <option >Metalurgie</option>
+    <option >Moara de foc</option>
+    <option >Mircea cel batran</option>
+    <option >Manta rosie</option>
+    <option >Nicolina 1</option>
+    <option >Nicolina 2</option>
+    <option >Podu de fier</option>
+    <option >Podu ros</option>
+    <option >Podu de piatra</option>
+    <option >Pacurari</option>
+    <option >Pacuret</option>
+    <option >Palas</option>
+    <option >Socola</option>
+    <option >Sararie</option>
+    <option >Tesatura</option>
+    <option >Ticau</option>
+    <option >Targu cucului</option>
+    <option >Tudor vladimirescu</option>
+    <option >Tatarasi nord</option>
+    <option >Tatarasi sud</option>
+    <option >Zimbru</option>
+    <option >Zona industriala dancu</option>
+    <option >Zona industriala sud</option>
 
                 </select>
 
